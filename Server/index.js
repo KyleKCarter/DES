@@ -8,8 +8,12 @@ const app = express();
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
 //controllers
+const {register} = require('./Controllers/authentication/register_controller');
+const {login} = require('./Controllers/authentication/login_controller');
+const {logout} = require('./Controllers/authentication/logout_controller');
 
 //middleware
+const {checkForUser} = require('./Middleware/auth_middleware');
 
 //massive
 massive(CONNECTION_STRING)
@@ -29,5 +33,11 @@ app.use(
 
 //middleware implementation
 app.use(express.json());
+app.use(checkForUser);
+
+//Auth implementation
+app.post('/auth/user/register', register);
+app.post('/auth/user/login', login);
+app.get('/auth/user/logout', logout);
 
 app.listen(SERVER_PORT, () => console.log(`Running on PORT ${SERVER_PORT}.`));;

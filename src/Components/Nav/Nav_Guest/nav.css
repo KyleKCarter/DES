@@ -1,0 +1,14 @@
+.navBar {
+    height: 10vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    width: 20vw;
+    display: flex;
+    justify-content: space-between;
+}

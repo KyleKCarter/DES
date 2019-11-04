@@ -1,9 +1,32 @@
 import React, {Component} from 'react';
+import './nav.css';
+import {Link} from 'react-router-dom';
 
 class Nav extends Component {
     render() {
         return (
-            <div>Nav_Guest</div>
+            <div className='navBar'>
+                <Link to='/'>
+                    <div>TITLE/LOGO</div>
+                </Link>
+                <ul>
+                    <Link to='/'>
+                        <li>HOME</li>
+                    </Link>
+                    <div>|</div>
+                    <Link to='/about'>
+                        <li>ABOUT</li>
+                    </Link>
+                    <div>|</div>
+                    <Link to='/user/register'>
+                        <li>REGISTER</li>
+                    </Link>
+                    <div>|</div>
+                    <Link to='/user/login'>
+                        <li>LOGIN</li>
+                    </Link>
+                </ul>
+            </div>
         )
     }
 }
