@@ -1,0 +1,15 @@
+.register_body {
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register_title {
+    color: rgb(235, 223, 223);
+}
+
+form {
+    color: rgb(235, 223, 223);
+}

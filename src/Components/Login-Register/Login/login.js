@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './login.css';
 import {connect} from 'react-redux';
 import {updateState, resetFields, loginUser} from '../../../Redux/Reducers/AuthReducer/AuthReducer';
 
@@ -23,8 +24,8 @@ class Login extends Component {
     render() {
         // console.log(this.props.history);
         return (
-            <div>
-                <div>Login</div>
+            <div className='login_body'>
+                <div className='login_title'>Login</div>
                 <div>
                     <form className='login_form'>
                         <div>Username:</div>
@@ -34,7 +35,7 @@ class Login extends Component {
                     </form>
                         <button onClick={this.clickLogin}>Login</button>
                 </div>
-                {this.state.error === true ? (<div>**Wrong username or password**</div>) : null}
+                {this.state.error === true ? (<div className='error_msg'>**Wrong username or password**</div>) : null}
             </div>
         )
     }

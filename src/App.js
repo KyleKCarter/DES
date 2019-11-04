@@ -5,11 +5,7 @@ import routes from './routes';
 import { connect } from 'react-redux';
 
 //reducers
-import {changeNav} from './Redux/Reducers/AuthReducer/AuthReducer';
-
-//components
-import NavGuest from './Components/Nav/Nav_Guest/nav';
-import NavUser from './Components/Nav/Nav_User/nav';
+import {changeNav, logoutUser} from './Redux/Reducers/AuthReducer/AuthReducer';
 
 class App extends Component {
   state = {
@@ -18,10 +14,10 @@ class App extends Component {
 
   render() {
     console.log(this.props.nav);
+    console.log(this.props.history);
     return (
       <HashRouter>
         <div className="App">
-          {this.props.nav === true ? <NavUser /> : this.props.nav === false ? <NavGuest /> : null}
           {routes}
         </div>
       </HashRouter>
@@ -36,5 +32,6 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {
-  changeNav
+  changeNav,
+  logoutUser
 })(App);

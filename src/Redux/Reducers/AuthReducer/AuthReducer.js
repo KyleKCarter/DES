@@ -8,8 +8,6 @@ const initialState = {
     password: '',
     loading: false,
     nav: false,
-    // text1: 'register',
-    // text2: 'login',
     user: {}
 }
 
@@ -65,7 +63,7 @@ export const loginUser = (username, password) => {
 export const logoutUser = () => {
     return {
         type: LOGOUT_USER,
-        payload: axios.get('/auth/user/logout')
+        payload: axios.post('/auth/user/logout')
     };
 };
 

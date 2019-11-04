@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './register.css';
 import {resetFields, updateState, registerUser} from '../../../Redux/Reducers/AuthReducer/AuthReducer';
 import {connect} from 'react-redux';
 
@@ -35,8 +36,8 @@ class Register extends Component {
     render() {
         // console.log(this.props.history);
         return (
-            <div>
-                <div>Register</div>
+            <div className='register_body'>
+                <div className='register_title'>Register</div>
                 <div>
                     <form className='register_form' type='submit'>
                         <div>First Name:</div>

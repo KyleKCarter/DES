@@ -38,6 +38,6 @@ app.use(checkForUser);
 //Auth implementation
 app.post('/auth/user/register', register);
 app.post('/auth/user/login', login);
-app.get('/auth/user/logout', logout);
+app.post('/auth/user/logout', logout);
 
 app.listen(SERVER_PORT, () => console.log(`Running on PORT ${SERVER_PORT}.`));;
