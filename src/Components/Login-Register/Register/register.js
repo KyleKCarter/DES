@@ -34,7 +34,6 @@ class Register extends Component {
     }
 
     render() {
-        // console.log(this.props.history);
         return (
             <div className='register_body'>
                 <div className='register_title'>Register</div>

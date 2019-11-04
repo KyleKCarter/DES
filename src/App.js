@@ -14,7 +14,7 @@ class App extends Component {
 
   render() {
     console.log(this.props.nav);
-    console.log(this.props.history);
+    console.log(this.props.user);
     return (
       <HashRouter>
         <div className="App">
@@ -27,7 +27,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    nav: state.authReducer.nav
+    nav: state.authReducer.nav,
+    user: state.authReducer.user
   }
 }
 

@@ -2,8 +2,12 @@ require("dotenv").config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
+const passport = require('passport');
 
 const app = express();
+
+//passport config
+// require('./Passport/passport')(passport);
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
@@ -30,6 +34,10 @@ app.use(
         saveUninitialized: true
     })
 )
+
+//passport middlewar
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 //middleware implementation
 app.use(express.json());

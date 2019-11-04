@@ -9,7 +9,7 @@ class SetUp extends Component {
             <h2>Twitch</h2>
             <h2>Mixer</h2>
             <h2>YouTube</h2>
-            <Link to='/user/home'>
+            <Link to='/user/login'>
                 <button>COMPLETE</button>
             </Link>
             </>

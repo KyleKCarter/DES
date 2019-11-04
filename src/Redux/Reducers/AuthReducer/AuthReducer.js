@@ -88,7 +88,6 @@ export default function authReducer(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                nav: true,
                 payload: payload.data
             }
         case `${LOGIN_USER}_PENDING`:
