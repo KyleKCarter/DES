@@ -1,5 +1,5 @@
 .navBar {
-    height: 10vh;
+    height: 12vh;
     padding-left: 5vw;
     padding-right: 5vw;
     display: flex;
@@ -7,8 +7,17 @@
     align-items: center;
 }
 
+.title {
+    color: whitesmoke;
+}
+
 ul {
     width: 20vw;
     display: flex;
     justify-content: space-between;
+    color: whitesmoke;
+}
+
+li {
+    color: whitesmoke;
 }

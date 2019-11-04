@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #313131;
+}
+
+.content {
+    width: 100%;
+    height: 88vh;
+    background: url("https://blog.twitch.tv/assets/uploads/c437ea957c4c0597cd81aa5c4c4dc398.jpeg");
+    animation: slide 60s infinite;
+    margin: auto;
+}
+
+@keyframes slide{
+    12.5% {
+        background: url("https://www.windowscentral.com/sites/wpcentral.com/files/styles/w1600h900crop/public/field/image/2019/03/mixer-homepage-2019.jpg?itok=TkW9iWUT");
+    }
+    25% {
+        background: url("https://s.aolcdn.com/dims-shared/dims3/GLOB/crop/1494x840+0+0/resize/1600x900!/format/jpg/quality/85/https://s.aolcdn.com/hss/storage/midas/4b9302fcb0ed30cb8aeef72a3df11116/205220185/New+Dark+Theme.png");
+    }
+    37.5% {
+        background: url("https://cdn.vox-cdn.com/thumbor/DozIPY2R83HpNavuwBycjG3ojbE=/0x45:2039x1192/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/48635751/netflix1_2040.0.0.jpg");
+    }
+    50% {
+        background: url("https://cnet4.cbsistatic.com/img/Of9ko2_Ns6pPlmzTisvyDHFrX6A=/1600x900/2016/04/21/4af81e2d-ab10-408f-9625-f156fcc00ffb/hbonow.png");
+    }
+    62.5% {
+        background: url("https://cdn.vox-cdn.com/thumbor/D4YIhEXKtzv__9RUX2Y_pqkih1c=/47x0:2801x1549/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/52282305/AmazonPrimeVideo_com_HiRes.0.jpeg");
+    }
+    75% {
+        background: url("https://cdn.androidheadlines.com/wp-content/uploads/2019/03/NBC-Sports-App-Android-TV-01-1-1420x799.jpg");
+    }
+    87.5% {
+        background: url("https://cdn.technadu.com/wp-content/uploads/2018/10/ESPN-Media-Streaming-UI.jpg");
+    }
+    100% {
+        background: url("https://blog.twitch.tv/assets/uploads/c437ea957c4c0597cd81aa5c4c4dc398.jpeg");
+    }
+}

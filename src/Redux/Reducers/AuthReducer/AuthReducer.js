@@ -8,11 +8,14 @@ const initialState = {
     password: '',
     loading: false,
     nav: false,
+    // text1: 'register',
+    // text2: 'login',
     user: {}
 }
 
 const UPDATE_STATE = 'UPDATE_STATE';
 const RESET_FIELDS = 'RESET_FIELDS';
+const CHANGE_NAV = 'CHANGE_NAV';
 const REGISTER_USER = 'REGISTER_USER';
 const LOGIN_USER = 'LOGIN_USER';
 const LOGOUT_USER = 'LOGOUT_USER';
@@ -27,6 +30,12 @@ export const updateState = e => {
 export const resetFields = () => {
     return {
         type: RESET_FIELDS
+    }
+}
+
+export const changeNav = () => {
+    return {
+        type: CHANGE_NAV
     }
 }
 

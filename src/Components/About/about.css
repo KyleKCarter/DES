@@ -1,0 +1,32 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.description {
+    background: rgb(99, 99, 99);
+    width: 35%;
+    height: 70vh;
+    border-radius: 5px;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+}
+
+p {
+    color: whitesmoke;
+}
+
+.streams {
+    width: 35%;
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 50px;
+}

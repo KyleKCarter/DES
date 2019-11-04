@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import './home.css';
 
 class Home extends Component {
     render() {
         return(
-            <div>Home_Guest</div>
+            <body>
+                <div className='content'></div>
+            </body>
         )
     }
 }

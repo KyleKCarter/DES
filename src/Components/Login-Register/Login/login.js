@@ -21,6 +21,7 @@ class Login extends Component {
     }
 
     render() {
+        // console.log(this.props.history);
         return (
             <div>
                 <div>Login</div>

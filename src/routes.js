@@ -8,6 +8,7 @@ import About from './Components/About/about';
 import Register from './Components/Login-Register/Register/register';
 import Login from './Components/Login-Register/Login/login';
 import SetUp from './Components/Accout Set Up/setUp';
+import Profile from './Components/Profile/profile';
 
 export default (
     <Switch>
@@ -17,5 +18,6 @@ export default (
         <Route component={Register} path='/user/register'/>
         <Route component={SetUp} path='/user/set-up' />
         <Route component={Login} path='/user/login'/>
+        <Route component={Profile} path='/user/profile' />
     </Switch>
 )

@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import './nav.css';
 import {Link} from 'react-router-dom';
 
+// import AuthReducer from '../../../Redux/Reducers/AuthReducer/AuthReducer';
+
 class Nav extends Component {
     render() {
         return (
             <div className='navBar'>
                 <Link to='/'>
-                    <div>TITLE/LOGO</div>
+                    <div className='title'>Daily Entertainment</div>
                 </Link>
                 <ul>
                     <Link to='/'>
@@ -19,6 +21,7 @@ class Nav extends Component {
                     </Link>
                     <div>|</div>
                     <Link to='/user/register'>
+                        {/* <li>{AuthReducer.getState().text1}</li> */}
                         <li>REGISTER</li>
                     </Link>
                     <div>|</div>
