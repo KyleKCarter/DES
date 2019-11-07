@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import routes from './routes';
 import { connect } from 'react-redux';
 
@@ -16,11 +16,11 @@ class App extends Component {
     console.log(this.props.nav);
     console.log(this.props.user);
     return (
-      <HashRouter>
+      <BrowserRouter>
         <div className="App">
           {routes}
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
