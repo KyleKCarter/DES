@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require('express');
-const router = express.Router();
 const massive = require('massive');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
@@ -78,22 +77,22 @@ passport.use(
 
 
         done(null, profile);
-        // function that adds the profile id to my media table in db
-        // console.log(profile);
-        // addProfileId = (req, res) => {
-        //     const db = req.app.get('db');
-        //     const {profileID, username} = req.body;
-        //     db.add_profile([profileID, username]);
-        //     req.session.user = {
-        //         userID: user[0].id,
-        //         profileID,
-        //         username
-        //     }
-        //     res.status(200).json(user);
-            // done(null, user.id);
-        // }
     })
 );
+
+// function that adds the profile id to my media table in db
+const addProfileId = (req, res) => {
+    const twitch_profile_id = profile.id
+    const {user_id} = req.session.user
+    const db = req.app.get('db');
+    const { twitch_profile_id } = req.body;
+    db.add_profile(twitch_profile_id, user_id);
+    req.session.user = {
+        user_id: user_id,
+        twitch_profile_id
+    }
+    res.status(200).json(profile);
+}
 
 //initializing passport
 // router.use(passport.initialize());
@@ -101,7 +100,7 @@ passport.use(
 
 //checking and retrieving for if user already exists so that a new session/cookie will not be started
 const authCheck = (req, res, next) => {
-    if(!req.user){
+    if (!req.user) {
         return res.redirect('/auth/login');
     } else {
         return next();
@@ -125,7 +124,7 @@ function debug(req, res, next) {
 app.get('/auth/twitch', passport.authenticate('twitch'));
 app.get('/auth/twitch/callback', passport.authenticate('twitch', {
     forceVerify: true,
-}), function(req, res) {
+}), function (req, res) {
     res.redirect('http://localhost:3000/user/set-up');
 });
 

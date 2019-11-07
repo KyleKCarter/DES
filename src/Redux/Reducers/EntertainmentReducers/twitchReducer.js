@@ -11,14 +11,14 @@ const UPDATE_FOLLOWS = 'UPDATE_FOLLOWS';
 export const updateFollows = () => {
     return {
         type: UPDATE_FOLLOWS,
-        payload: axios.get(`https://api.twitch.tv/helix/users/follows?from_id=${Profile_ID}`)
+        payload: axios.get(`https://api.twitch.tv/helix/users/follows?from_id=${profile_iD}`)
     }
 };
 
 export const updateDisplayName = () => {
     return {
         type: UPDATE_DISPLAY_NAME,
-        payload: axios.get(`https://api.twitch.tv/helix/users?id=${follows.display_name}`)
+        payload: axios.get(`https://api.twitch.tv/helix/users?id=${state.follows.display_name}`)
     }
 };
 
