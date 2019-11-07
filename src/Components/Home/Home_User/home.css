@@ -1,3 +1,49 @@
-.user_home_title {
+.user_home_page {
+    height: 88vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user_home_content {
     color: whitesmoke;
+    height: 70vh;
+    width: 115vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: wrap;
+    flex-direction: row;
+    align-self: center;
+    justify-self: center;
+}
+
+.user_home_twitch {
+    height: 35vh;
+    width: 25vw;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+
+.user_home_mixer {
+    height: 35vh;
+    width: 25vw;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+
+.user_home_youtube {
+    height: 25vh;
+    width: 55vw;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
 }

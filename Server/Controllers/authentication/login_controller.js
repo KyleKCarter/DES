@@ -10,7 +10,7 @@ const login = async(req, res) => {
     const isMatching = await bcrypt.compare(password, checkedUser[0].password)
     if(isMatching) {
         req.session.user = {
-            id: checkedUser[0].id,
+            id: checkedUser[0].user_id,
             username: checkedUser[0].username,
             firstname: checkedUser[0].firsname,
             lastname: checkedUser[0].lastname

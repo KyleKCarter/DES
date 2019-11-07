@@ -12,6 +12,7 @@ import Login from './Components/Login-Register/Login/login';
 import SetUp from './Components/Accout Set Up/setUp';
 import Profile from './Components/Profile/profile';
 import Entertainment from './Components/Entertainment/entertainment';
+import TwitchPage from './Components/Twitch/twitchLandingPage';
 
 export default (
     <>
@@ -26,6 +27,7 @@ export default (
         <Route component={Login} path='/user/login' />
         <Route component={Profile} path='/user/profile' />
         <Route component={Entertainment} path='/user/entertainment' />
+        <Route component={TwitchPage} path='/user/twitch' />
     </Switch>
     </>
 )

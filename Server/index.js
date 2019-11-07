@@ -19,14 +19,15 @@ const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, SESSION_COOKIE_KEY, TWIT
 const { register } = require('./Controllers/authentication/register_controller');
 const { login } = require('./Controllers/authentication/login_controller');
 const { logout } = require('./Controllers/authentication/logout_controller');
+const { getTwitchId } = require('./Controllers/entertainment/twitchController');
 
 //middleware
 const { checkForUser } = require('./Middleware/auth_middleware');
-
 //massive
 massive(CONNECTION_STRING)
     .then(db => {
         app.set('db', db);
+        dbInstance = db;
         console.log("Database Connected");
     })
     .catch(error => console.log(error));
@@ -62,7 +63,7 @@ passport.serializeUser((id, done) => {
 passport.deserializeUser((obj, done) => {
     done(null, obj);
 })
-
+let userProfile = null;
 passport.use(
     new twitchStrategy({
         callbackURL: CALL_BACK_URL,
@@ -75,23 +76,24 @@ passport.use(
         console.log(profile.id);
         console.log(done);
 
-
+        userProfile = profile;
         done(null, profile);
     })
 );
 
 // function that adds the profile id to my media table in db
 const addProfileId = (req, res) => {
-    const twitch_profile_id = profile.id
-    const {user_id} = req.session.user
+    console.log(req.session)
+    const twitch_profile_id = userProfile.id
+    const {id} = req.session.user
     const db = req.app.get('db');
-    const { twitch_profile_id } = req.body;
-    db.add_profile(twitch_profile_id, user_id);
+    // const { twitch_profile_id } = req.body;
+    db.add_profile(id, twitch_profile_id);
     req.session.user = {
-        user_id: user_id,
+        id: id,
         twitch_profile_id
     }
-    res.status(200).json(profile);
+    res.status(200).json(userProfile);
 }
 
 //initializing passport
@@ -127,6 +129,10 @@ app.get('/auth/twitch/callback', passport.authenticate('twitch', {
 }), function (req, res) {
     res.redirect('http://localhost:3000/user/set-up');
 });
+
+//twitch http requests
+app.post('/api/twitch_profile_id', addProfileId);
+app.get('/api/twitch_profile_id', getTwitchId);
 
 
 app.listen(SERVER_PORT, () => console.log(`Running on PORT ${SERVER_PORT}.`));
