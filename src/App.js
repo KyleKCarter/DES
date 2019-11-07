@@ -13,8 +13,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.nav);
-    console.log(this.props.user);
     return (
       <BrowserRouter>
         <div className="App">
