@@ -6,7 +6,7 @@ class TwitchStreamPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            display_name: 'DrDisrespect'
+            display_name: this.props.match.params.display_name
         }
     }
 

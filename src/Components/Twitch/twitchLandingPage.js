@@ -39,31 +39,16 @@ class TwitchLandingPage extends Component {
             })
     };
 
-    getStream = (val) => {
-        console.log(val);
-        axios.get(`https://api.twitch/tv/helix/users?login=${val}`, {
-            headers: {
-                "Client-ID": `${process.env.REACT_APP_TWITCH_CLIENT_ID}`
-            }
-        })
-            .then(response => {
-                console.log(response)
-                // this.setState({ display_name: response.data.data[0].display_name })
-                this.props.history.push('/user/twitch/stream')
-            })
-            .catch(error => {
-                console.log(error);
-            })
+    getStream = (e, val) => {
+        e.preventDefault();
+        this.props.history.push(`/user/twitch/stream/${val}`)
     }
 
     render() {
-        console.log(this.state.follows);
-        console.log(this.getStream());
-
         let mappedFollows = this.state.follows.map(val => {
             return (
                 <div className='Following_card'>
-                    <div className='followed_streamer' onClick={(val) => this.getStream(val)}>{val.to_name}</div>
+                    <div className='followed_streamer' onClick={(e) => this.getStream(e, val.to_name)}>{val.to_name}</div>
                 </div>
             )
         })
