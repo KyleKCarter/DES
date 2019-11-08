@@ -28,7 +28,7 @@ export default (
         <Route component={Login} path='/user/login' />
         <Route component={Profile} path='/user/profile' />
         <Route component={Entertainment} path='/user/entertainment' />
-        <Route component={TwitchPage} path='/user/twitch' />
+        <Route component={TwitchPage} exact path='/user/twitch' />
         <Route component={TwitchStreamPage} path='/user/twitch/stream' />
     </Switch>
     </>

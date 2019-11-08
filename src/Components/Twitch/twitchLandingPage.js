@@ -3,6 +3,7 @@ import { updateTwitchProfileId } from '../../Redux/Reducers/EntertainmentReducer
 import { connect } from 'react-redux';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import './css/twitchLandingPage.css';
 require('dotenv').config();
 
 class TwitchLandingPage extends Component {
@@ -47,14 +48,13 @@ class TwitchLandingPage extends Component {
                 return(
                     <div className='Following_card'>
                         <Link to='/user/twitch/stream'>
-                        <h5>{val.to_name}</h5>
+                        <div>{val.to_name}</div>
                         </Link>
                     </div>
                 )
             })
         return (
             <div className='twitch_user_landing_page'>
-                <div className='twitch_user_content'>Twitch Landing Page</div>
                 <h1>Following</h1>
                 <div>{mappedFollows}</div>
             </div>

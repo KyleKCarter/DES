@@ -1,0 +1,26 @@
+.page_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    width: 90vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.streamer {
+    font-size: 25px;
+    color: whitesmoke;
+}
+
+.stream_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
