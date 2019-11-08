@@ -8,7 +8,6 @@ const initialState = {
 }
 
 const UPDATE_TWITCH_PROFILE_ID = 'UPDATE_TWITCH_PROFILE_ID';
-// const UPDATE_DISPLAY_NAME = 'UPDATE_DISPLAY_NAME';
 
 export const updateTwitchProfileId = () => {
     return {
@@ -16,17 +15,6 @@ export const updateTwitchProfileId = () => {
         payload: axios.get('/api/twitch_profile_id')
     }
 }
-
-// export const updateDisplayName = () => {
-//     return {
-//         type: UPDATE_DISPLAY_NAME,
-//         payload: axios.get(`https://api.twitch/tv/helix/users?id=${}`, {
-//             headers: {
-//                 "Client-ID": `${process.env.REACT_APP_TWITCH_CLIENT_ID}`
-//             }
-//         })
-//     }
-// };
 
 export default function reducer(state = initialState, action) {
     const {type, payload} = action;
@@ -42,17 +30,6 @@ export default function reducer(state = initialState, action) {
                 loading: false,
                 twitch_profile_id: payload.data.twitch_profile_id
             };
-        // case `${UPDATE_DISPLAY_NAME}_PENDING`:
-        //     return {
-        //         ...state,
-        //         loading: true
-        //     };
-        // case `${UPDATE_DISPLAY_NAME}_FULFILLED`:
-        //     return {
-        //         ...state,
-        //         loading: false,
-        //         display_name: payload.data.data[0].display_name
-        //     }
         default:
             return state
     }
