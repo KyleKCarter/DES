@@ -29,7 +29,7 @@ export default (
         <Route component={Profile} path='/user/profile' />
         <Route component={Entertainment} path='/user/entertainment' />
         <Route component={TwitchPage} exact path='/user/twitch' />
-        <Route component={TwitchStreamPage} path='/user/twitch/stream' />
+        <Route component={TwitchStreamPage} path='/user/twitch/stream/' />
     </Switch>
     </>
 )

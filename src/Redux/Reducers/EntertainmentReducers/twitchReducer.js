@@ -1,8 +1,9 @@
 import axios from 'axios';
+require('dotenv').config();
 
 const initialState = {
     twitch_profile_id: '',
-    // follows_display_name: '',
+    display_name: '',
     loading: false
 }
 
@@ -19,7 +20,11 @@ export const updateTwitchProfileId = () => {
 // export const updateDisplayName = () => {
 //     return {
 //         type: UPDATE_DISPLAY_NAME,
-//         payload: axios.get(`https://api.twitch.tv/helix/users?id=${follows.display_name}`)
+//         payload: axios.get(`https://api.twitch/tv/helix/users?id=${}`, {
+//             headers: {
+//                 "Client-ID": `${process.env.REACT_APP_TWITCH_CLIENT_ID}`
+//             }
+//         })
 //     }
 // };
 
@@ -37,11 +42,17 @@ export default function reducer(state = initialState, action) {
                 loading: false,
                 twitch_profile_id: payload.data.twitch_profile_id
             };
-        // case UPDATE_DISPLAY_NAME:
+        // case `${UPDATE_DISPLAY_NAME}_PENDING`:
         //     return {
         //         ...state,
-        //         follows_display_name: payload.data.display_name
+        //         loading: true
         //     };
+        // case `${UPDATE_DISPLAY_NAME}_FULFILLED`:
+        //     return {
+        //         ...state,
+        //         loading: false,
+        //         display_name: payload.data.data[0].display_name
+        //     }
         default:
             return state
     }
