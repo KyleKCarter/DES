@@ -2,24 +2,25 @@ require("dotenv").config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
-const cookieSession = require('cookie-session');
 
 
 //passport
 const passport = require('passport');
 const twitchStrategy = require('passport-twitch-new').Strategy;
+const mixerStrategy = require('passport-mixer').Strategy;
 
 
 
 const app = express();
 
-const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, SESSION_COOKIE_KEY, TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET, CALL_BACK_URL } = process.env;
+const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, SESSION_COOKIE_KEY, TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET, TWITCH_CALL_BACK_URL, MIXER_CLIENT_ID, MIXER_CLIENT_SECRET, MIXER_CALL_BACK_URL } = process.env;
 
 //controllers
 const { register } = require('./Controllers/authentication/register_controller');
 const { login } = require('./Controllers/authentication/login_controller');
 const { logout } = require('./Controllers/authentication/logout_controller');
 const { getTwitchId } = require('./Controllers/entertainment/twitchController');
+const { getMixerId } = require('./Controllers/entertainment/mixerController');
 
 //middleware
 const { checkForUser } = require('./Middleware/auth_middleware');
@@ -55,7 +56,7 @@ app.post('/auth/user/register', register);
 app.post('/auth/user/login', login);
 app.post('/auth/user/logout', logout);
 
-//passport twitch strategy
+//passport serialization
 passport.serializeUser((id, done) => {
     done(null, id);
 });
@@ -63,32 +64,29 @@ passport.serializeUser((id, done) => {
 passport.deserializeUser((obj, done) => {
     done(null, obj);
 })
-let userProfile = null;
+
+//passport twitch strategy
+let twitchProfile = null;
 passport.use(
     new twitchStrategy({
-        callbackURL: CALL_BACK_URL,
+        callbackURL: TWITCH_CALL_BACK_URL,
         clientID: TWITCH_CLIENT_ID,
         clientSecret: TWITCH_CLIENT_SECRET,
         scope: 'user_read'
     }, (accessToken, refreshToken, profile, done) => {
-        console.log(accessToken);
-        console.log(refreshToken);
-        console.log(profile.id);
-        console.log(done);
 
-        userProfile = profile;
+        twitchProfile = profile;
         done(null, profile);
     })
 );
 
 // function that adds the profile id to my media table in db
-const addProfileId = (req, res) => {
+const addTwitchProfileId = (req, res) => {
     console.log(req.session)
-    const twitch_profile_id = userProfile.id
-    const {id} = req.session.user
+    const twitch_profile_id = twitchProfile.id;
+    const {id} = req.session.user;
     const db = req.app.get('db');
-    // const { twitch_profile_id } = req.body;
-    db.add_profile(id, twitch_profile_id);
+    db.add_twitchProfile(id, twitch_profile_id);
     req.session.user = {
         id: id,
         twitch_profile_id
@@ -96,27 +94,34 @@ const addProfileId = (req, res) => {
     res.status(200).json(userProfile);
 }
 
-//initializing passport
-// router.use(passport.initialize());
-// router.use(passport.session());
+//passport mixer strategy
+let mixerProfile = null
+passport.use(
+    new mixerStrategy ({
+        clientID: MIXER_CLIENT_ID,
+        clientSecret: MIXER_CLIENT_SECRET,
+        callbackURL: MIXER_CALL_BACK_URL
+    }, (accessToken, refreshToken, profile, done) => {
 
-//checking and retrieving for if user already exists so that a new session/cookie will not be started
-const authCheck = (req, res, next) => {
-    if (!req.user) {
-        return res.redirect('/auth/login');
-    } else {
-        return next();
+        mixerProfile = profile;
+        done(null, profile);
+    })
+)
+
+const addMixerProfileId = (req, res) => {
+    console.log(req.session)
+    const mixer_profile_id = mixerProfile.id;
+    const {id} = req.session.user;
+    const db = req.app.get('db');
+    db.add_mixerProfile(id, mixer_profile_id);
+    req.session.user = {
+        id: id,
+        mixer_profile_id
     }
+    res.status(200).json(userProfile);
 }
 
-// router.get('/', authCheck, (req, res) => {
-//     return res.send('profile', {user: req.user});
-//     //return res.status(200).end();
-// });
-
-// //auth with twitch
-// router.get('/twitch', passport.authenticate('twitch'));
-
+//debug function
 function debug(req, res, next) {
     console.log("HIT");
     next()
@@ -129,10 +134,20 @@ app.get('/auth/twitch/callback', passport.authenticate('twitch', {
 }), function (req, res) {
     res.redirect('http://localhost:3000/user/set-up');
 });
+app.get('/auth/mixer', passport.authenticate('mixer'));
+app.get('/auth/mixer/callback', passport.authenticate('mixer', {
+    forceVerify: true,
+}), (req, res) => {
+    res.redirect('http://localhost:3000/user/set-up');
+})
 
 //twitch http requests
-app.post('/api/twitch_profile_id', addProfileId);
+app.post('/api/twitch_profile_id', addTwitchProfileId);
 app.get('/api/twitch_profile_id', getTwitchId);
+
+//mixer http requests
+app.post('/api/mixer_profile_id', addMixerProfileId);
+app.get('/api/mixer_profile_id', getMixerId);
 
 
 app.listen(SERVER_PORT, () => console.log(`Running on PORT ${SERVER_PORT}.`));
