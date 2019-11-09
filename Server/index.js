@@ -8,6 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 const twitchStrategy = require('passport-twitch-new').Strategy;
 const mixerStrategy = require('passport-mixer').Strategy;
+const googleStrategy = require('passport-google-oauth').Strategy;
 
 
 
@@ -23,7 +24,10 @@ const {
     TWITCH_CALL_BACK_URL, 
     MIXER_CLIENT_ID, 
     MIXER_CLIENT_SECRET, 
-    MIXER_CALL_BACK_URL 
+    MIXER_CALL_BACK_URL,
+    GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET,
+    GOOGLE_CALL_BACK_URL
 } = process.env;
 
 //controllers
@@ -32,6 +36,7 @@ const { login } = require('./Controllers/authentication/login_controller');
 const { logout } = require('./Controllers/authentication/logout_controller');
 const { getTwitchId } = require('./Controllers/entertainment/twitchController');
 const { getMixerId } = require('./Controllers/entertainment/mixerController');
+const { getYoutubeId } = require('./Controllers/entertainment/youtubeController');
 
 //middleware
 const { checkForUser } = require('./Middleware/auth_middleware');
@@ -132,6 +137,33 @@ const addMixerProfileId = (req, res) => {
     res.status(200).json(mixerProfile);
 }
 
+//passport google strategy
+let googleProfile = null
+passport.use(
+    new googleStrategy ({
+        clientID: GOOGLE_CLIENT_ID,
+        clientSecret: GOOGLE_CLIENT_SECRET,
+        callbackURL: GOOGLE_CALL_BACK_URL
+    }, (token, tokenSecret, profile, done) => {
+
+        googleProfile = profile;
+        done(null, profile);
+    })
+)
+
+const addYouTubeProfileId = (req, res) => {
+    console.log(req.session)
+    const youtube_profile_id = googleProfile.id
+    const {id} = req.session.user;
+    const db = req.app.get('db');
+    db.add_youtubeProfile(id, youtube_profile_id);
+    req.session.user = {
+        id: id,
+        youtube_profile_id
+    }
+    res.status(200).json(youtubeProfile);
+}
+
 //debug function
 function debug(req, res, next) {
     console.log("HIT");
@@ -151,6 +183,12 @@ app.get('/auth/mixer/callback', passport.authenticate('mixer', {
 }), (req, res) => {
     res.redirect('http://localhost:3000/user/set-up');
 })
+app.get('/auth/google', passport.authenticate('google'));
+app.get('/auth/google/callback', passport.authenticate('google', {
+    forceVerify: true,
+}), function (req, res) {
+    res.redirect('http://localhost:3000/user/set-up');
+})
 
 //twitch http requests
 app.post('/api/twitch_profile_id', addTwitchProfileId);
@@ -161,6 +199,7 @@ app.post('/api/mixer_profile_id', addMixerProfileId);
 app.get('/api/mixer_profile_id', getMixerId);
 
 //youtube http requests
-
+app.post('/api/youtube_profile_id', addYouTubeProfileId);
+app.get('/api/youtube_profile_id', getYoutubeId);
 
 app.listen(SERVER_PORT, () => console.log(`Running on PORT ${SERVER_PORT}.`));

@@ -13,6 +13,7 @@
     "express-session": "^1.17.0",
     "massive": "^6.1.1",
     "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0",
     "passport-local": "^1.0.0",
     "passport-mixer": "^1.0.2",
     "passport-mixer2": "^1.0.0",
