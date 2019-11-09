@@ -14,6 +14,8 @@ import Profile from './Components/Profile/profile';
 import Entertainment from './Components/Entertainment/entertainment';
 import TwitchPage from './Components/Twitch/twitchLandingPage';
 import TwitchStreamPage from './Components/Twitch/twitchStreamPage';
+import MixerPage from './Components/Mixer/mixerLandingPage';
+import MixerStreamPage from './Components/Mixer/mixerStreamPage';
 
 export default (
     <>
@@ -30,6 +32,8 @@ export default (
         <Route component={Entertainment} path='/user/entertainment' />
         <Route component={TwitchPage} exact path='/user/twitch' />
         <Route component={TwitchStreamPage} path='/user/twitch/stream/:display_name' />
+        <Route component={MixerPage} exact path='/user/mixer' />
+        <Route component={MixerStreamPage} path='/user/mixer/stream/:display_name' />
     </Switch>
     </>
 )

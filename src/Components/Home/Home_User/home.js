@@ -10,7 +10,7 @@ class Home extends Component {
                     <Link to='/user/twitch'>
                         <div className='user_home_twitch'>Twitch</div>
                     </Link>
-                    <Link>
+                    <Link to='/user/mixer'>
                         <div className='user_home_mixer'>Mixer</div>
                     </Link>
                     <Link>

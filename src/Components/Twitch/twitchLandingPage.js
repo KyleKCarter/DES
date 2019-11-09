@@ -63,7 +63,7 @@ class TwitchLandingPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        twitch_profile_id: state.TwitchReducer.twitch_profile_id,
+        twitch_profile_id: state.twitchReducer.twitch_profile_id,
         user: state.authReducer.user
     }
 }

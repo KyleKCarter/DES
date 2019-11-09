@@ -13,7 +13,18 @@ const mixerStrategy = require('passport-mixer').Strategy;
 
 const app = express();
 
-const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, SESSION_COOKIE_KEY, TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET, TWITCH_CALL_BACK_URL, MIXER_CLIENT_ID, MIXER_CLIENT_SECRET, MIXER_CALL_BACK_URL } = process.env;
+const { 
+    SERVER_PORT, 
+    CONNECTION_STRING, 
+    SESSION_SECRET, 
+    SESSION_COOKIE_KEY, 
+    TWITCH_CLIENT_ID, 
+    TWITCH_CLIENT_SECRET, 
+    TWITCH_CALL_BACK_URL, 
+    MIXER_CLIENT_ID, 
+    MIXER_CLIENT_SECRET, 
+    MIXER_CALL_BACK_URL 
+} = process.env;
 
 //controllers
 const { register } = require('./Controllers/authentication/register_controller');
@@ -91,7 +102,7 @@ const addTwitchProfileId = (req, res) => {
         id: id,
         twitch_profile_id
     }
-    res.status(200).json(userProfile);
+    res.status(200).json(twitchProfile);
 }
 
 //passport mixer strategy
@@ -118,7 +129,7 @@ const addMixerProfileId = (req, res) => {
         id: id,
         mixer_profile_id
     }
-    res.status(200).json(userProfile);
+    res.status(200).json(mixerProfile);
 }
 
 //debug function
@@ -148,6 +159,8 @@ app.get('/api/twitch_profile_id', getTwitchId);
 //mixer http requests
 app.post('/api/mixer_profile_id', addMixerProfileId);
 app.get('/api/mixer_profile_id', getMixerId);
+
+//youtube http requests
 
 
 app.listen(SERVER_PORT, () => console.log(`Running on PORT ${SERVER_PORT}.`));

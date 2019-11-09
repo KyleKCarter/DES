@@ -1,3 +1,4 @@
-INSERT INTO media (user_id, mixer_profile_id)
-VALUES ($1, $2)
+UPDATE media
+SET mixer_profile_id = $2
+WHERE user_id = $1
 RETURNING *;

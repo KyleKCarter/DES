@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './setUp.css';
-import { updateTwitchProfileId } from '../../Redux/Reducers/AccountSetUpReducer/AccountSetUpReducer';
+import { updateTwitchProfileId, updateMixerProfileId } from '../../Redux/Reducers/AccountSetUpReducer/AccountSetUpReducer';
 import { connect } from 'react-redux';
 
 class SetUp extends Component {
@@ -12,13 +12,25 @@ class SetUp extends Component {
         e.preventDefault();
         const { twitch_profile_id } = this.props;
         this.props.updateTwitchProfileId(
-            twitch_profile_id
-        ).then(() => {
+           twitch_profile_id
+           )
+        const { mixer_profile_id} = this.props
+        this.props.updateMixerProfileId(
+            mixer_profile_id
+        )
+       .then(() => {
             this.props.history.push('/user/login');
         }).catch(() => {
             this.setState({ error: true })
         })
     }
+
+    // addMixerProfileId = () => {
+    //     const { mixer_profile_id } = this.props;
+    //     this.props.updateMixerProfileId(
+    //         mixer_profile_id
+    //     )
+    // }
 
     render() {
         return (
@@ -36,14 +48,14 @@ class SetUp extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
         twitch_profile_id: state.accountSetUpReducer.twitch_profile_id,
-        // mixer_profile_id: state.reducer.mixer_profile_id,
+        mixer_profile_id: state.accountSetUpReducer.mixer_profile_id,
         // youtube_profile_id: state.reducer.youtube_profile_id
     }
 }
 
 export default connect(mapStateToProps, {
-    updateTwitchProfileId
+    updateTwitchProfileId,
+    updateMixerProfileId,
 })(SetUp);

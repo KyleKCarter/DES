@@ -4,12 +4,14 @@ import promise from 'redux-promise-middleware';
 //reducers
 import authReducer from './Reducers/AuthReducer/AuthReducer';
 import accountSetUpReducer from './Reducers/AccountSetUpReducer/AccountSetUpReducer';
-import TwitchReducer from './Reducers/EntertainmentReducers/twitchReducer';
+import twitchReducer from './Reducers/EntertainmentReducers/twitchReducer';
+import mixerReducer from './Reducers/EntertainmentReducers/mixerReducer';
 
 const root = combineReducers ({
     authReducer,
     accountSetUpReducer,
-    TwitchReducer
+    twitchReducer,
+    mixerReducer
 });
 
 export default createStore(root, applyMiddleware(promise));
