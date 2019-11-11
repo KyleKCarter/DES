@@ -28,7 +28,6 @@ class MixerLandingPage extends Component {
     getFollows = () => {
         axios.get(`https://mixer.com/api/v1/users/${this.state.mixer_profile_id}/follows`)
             .then(response => {
-                console.log(response.data)
                 this.setState({ follows: response.data })
             })
             .catch(error => {
@@ -42,9 +41,6 @@ class MixerLandingPage extends Component {
     }
 
     render() {
-        console.log(this.state.mixer_profile_id);
-        console.log(this.state.follows)
-
         let mappedFollows = this.state.follows.map(val => {
             return (
                 <div className='following_card'>

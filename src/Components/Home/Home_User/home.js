@@ -13,7 +13,7 @@ class Home extends Component {
                     <Link to='/user/mixer'>
                         <div className='user_home_mixer'>Mixer</div>
                     </Link>
-                    <Link>
+                    <Link to='/user/youtube'>
                         <div className='user_home_youtube'>YouTube</div>
                     </Link>
                 </div>

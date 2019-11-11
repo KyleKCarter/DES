@@ -8,7 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 const twitchStrategy = require('passport-twitch-new').Strategy;
 const mixerStrategy = require('passport-mixer').Strategy;
-const googleStrategy = require('passport-google-oauth').Strategy;
+const googleStrategy = require('passport-google-oauth2').Strategy;
 
 
 
@@ -143,8 +143,9 @@ passport.use(
     new googleStrategy ({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: GOOGLE_CALL_BACK_URL
-    }, (token, tokenSecret, profile, done) => {
+        callbackURL: GOOGLE_CALL_BACK_URL,
+        passReqToCallback: true
+    }, (accessToken, refreshToken, profile, done) => {
 
         googleProfile = profile;
         done(null, profile);
@@ -183,7 +184,8 @@ app.get('/auth/mixer/callback', passport.authenticate('mixer', {
 }), (req, res) => {
     res.redirect('http://localhost:3000/user/set-up');
 })
-app.get('/auth/google', passport.authenticate('google'));
+app.get('/auth/google', passport.authenticate('google', {scope:  [ 'https://www.googleapis.com/auth/plus.login',
+, 'https://www.googleapis.com/auth/plus.profile.emails.read' ]}));
 app.get('/auth/google/callback', passport.authenticate('google', {
     forceVerify: true,
 }), function (req, res) {

@@ -19,7 +19,7 @@ class Nav extends Component {
         return (
             <div className='navBar'>
                 <Link to='/'>
-                    <div className='title'>Daily Entertainment</div>
+                    <div className='title'>Daily Entertainment Services King</div>
                 </Link>
                 <ul>
                     {!this.props.user.username ?

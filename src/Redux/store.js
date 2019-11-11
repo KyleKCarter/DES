@@ -6,12 +6,14 @@ import authReducer from './Reducers/AuthReducer/AuthReducer';
 import accountSetUpReducer from './Reducers/AccountSetUpReducer/AccountSetUpReducer';
 import twitchReducer from './Reducers/EntertainmentReducers/twitchReducer';
 import mixerReducer from './Reducers/EntertainmentReducers/mixerReducer';
+import youtubeReducer from './Reducers/EntertainmentReducers/youtubeReducer';
 
 const root = combineReducers ({
     authReducer,
     accountSetUpReducer,
     twitchReducer,
-    mixerReducer
+    mixerReducer,
+    youtubeReducer
 });
 
 export default createStore(root, applyMiddleware(promise));

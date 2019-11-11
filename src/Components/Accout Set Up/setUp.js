@@ -39,7 +39,7 @@ class SetUp extends Component {
                 <div className='set-up_content'>
                     <a href="http://localhost:5555/auth/twitch"><button>Log in with Twitch</button></a>
                     <a href="http://localhost:5555/auth/mixer"><button>Log in with Mixer</button></a>
-                    <button>Log in with YouTube</button>
+                    <a href="http://localhost:5555/auth/google"><button>Log in with YouTube</button></a>
                 </div>
                 <button onClick={this.onClickComplete}>COMPLETE</button>
             </div>

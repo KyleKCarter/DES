@@ -1,0 +1,36 @@
+.youtube_user_landing_page {
+    display: flex;
+}
+
+.subscribed_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+h1 {
+    margin-left:12vh;
+    color: whitesmoke;
+    font-size: 25px;
+}
+
+.Subscribed_card {
+    margin-left: 5vh;
+    background-color: rgb(240, 27, 27);
+    width: 30vh;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribed_creator {
+    width: 25vh;
+    height: 5vh;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
