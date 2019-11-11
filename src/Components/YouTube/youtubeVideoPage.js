@@ -6,9 +6,12 @@ class YouTubeVideoPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            video_title: ''
+            video_title: this.props.match.params.video_title,
+            videoId: this.props.match.params.videoId
         }
     }
+
+
 
     render() {
 
@@ -19,7 +22,7 @@ class YouTubeVideoPage extends Component {
                     <h1 className='video'>{this.state.video_title}</h1>
                 </div>
                 <div className='video_content'>
-
+                    <iframe title='Video frame' src={`https://www.youtube.com/embed/${this.state.videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true' width="880" height="550"></iframe>
                 </div>
             </div>
         )

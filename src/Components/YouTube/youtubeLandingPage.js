@@ -14,6 +14,7 @@ class YoutubeLandingPage extends Component {
             username: '',
             subscribed: [],
             video_title: '',
+            videoId: '',
             channelSection: []
         }
     }
@@ -52,7 +53,10 @@ class YoutubeLandingPage extends Component {
 
     getVideo = (e, val) => {
         e.preventDefault();
-        this.setState({ video_title: val })
+        this.setState({ 
+            video_title: val.title,
+            videoId: val.id
+         })
         this.props.history.push(`/user/youtube/video/${val}`)
     }
 
@@ -70,7 +74,7 @@ class YoutubeLandingPage extends Component {
             console.log(val);
             return (
                 <div className='channel_section'>
-                    <div className='videos' onClick={(e) => this.getVideo(e, val)}>{val}</div>
+                    <div className='videos' onClick={(e) => this.getVideo(e, val.items[0])}>{val.title}</div>
                 </div>
             )
         })
