@@ -18,6 +18,7 @@ import MixerPage from './Components/Mixer/mixerLandingPage';
 import MixerStreamPage from './Components/Mixer/mixerStreamPage';
 import YoutubePage from './Components/YouTube/youtubeLandingPage';
 import YoutubeVideoPage from './Components/YouTube/youtubeVideoPage';
+import YoutubeStreamPage from './Components/YouTube/youtubeStreamPage';
 
 export default (
     <>
@@ -37,7 +38,8 @@ export default (
         <Route component={MixerPage} exact path='/user/mixer' />
         <Route component={MixerStreamPage} path='/user/mixer/stream/:display_name' />
         <Route component={YoutubePage} exact path='/user/youtube' />
-        <Route component={YoutubeVideoPage} path='/user/youtube/video/:username' />
+        <Route component={YoutubeVideoPage} path='/user/youtube/video/:videoId' />
+        <Route component={YoutubeStreamPage} path='/user/youtube/stream/:streamId' />
     </Switch>
     </>
 )

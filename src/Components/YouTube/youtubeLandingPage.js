@@ -15,6 +15,8 @@ class YoutubeLandingPage extends Component {
             subscribed: [],
             video_title: '',
             videoId: '',
+            display_name: '',
+            streamId: '',
             channelSection: []
         }
     }
@@ -33,7 +35,9 @@ class YoutubeLandingPage extends Component {
     getSubscibed = () => {
         axios.get(`https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=${this.state.ChannelId}&maxResults=50&key=${process.env.REACT_APP_API_KEY1}`)
             .then(response => {
-                this.setState({ subscribed: response.data.items })
+                this.setState({ 
+                    subscribed: response.data.items
+                })
             })
             .catch(error => {
                 console.log(error);
@@ -52,6 +56,8 @@ class YoutubeLandingPage extends Component {
     }
 
     getVideo = (e, val) => {
+        //need to be able to pass down the videoId of the video
+        //will need to pass down the title of the video
         e.preventDefault();
         this.setState({ 
             video_title: val.title,
@@ -60,13 +66,24 @@ class YoutubeLandingPage extends Component {
         this.props.history.push(`/user/youtube/video/${val}`)
     }
 
+    getStream = (e, val) => {
+        //need to be able to pass down the streamId of the stream
+        //will need to pass down the display name of the streamer
+        e.preventDefault();
+        this.setState({
+            streamId: val.id
+        })
+        this.props.history.push(`/user/youtube/stream/${val}`)
+    }
+
     render() {
         console.log(this.state.channelSection);
+        console.log(this.state.display_name);
 
         let mappedSubscribed = this.state.subscribed.map(val => {
             return (
                 <div className='Subscribed_card'>
-                    <div className='subscribed_creator' onClick={(e) => this.getChannel(e, val.snippet.resourceId.channelId)}>{val.snippet.title}</div>
+                    <div className='subscribed_creator' onClick={(e) => this.getChannel(e, val.snippet.resourceId.channelId)} /*onClick={(e) => this.setState({ display_name: val.snippet.title })}*/>{val.snippet.title}</div>
                 </div>
             )
         })
