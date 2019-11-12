@@ -8,13 +8,13 @@ class Home extends Component {
             <div className='user_home_page'>
                 <div className='user_home_content'>
                     <Link to='/user/twitch'>
-                        <div className='user_home_twitch'>Twitch</div>
+                        <img className='twitch_logo' src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2019/09/3-twitch-is-rebranding-for-the-first-time.jpg" alt="twitch_logo"/>
                     </Link>
                     <Link to='/user/mixer'>
-                        <div className='user_home_mixer'>Mixer</div>
+                        <img className='mixer_logo' src="https://files.startupranking.com/startup/thumb/52553_dae09bc2ebff123b43708bf949cea0cf095281d2_mixer_m.png" alt="mixer_logo"/>
                     </Link>
                     <Link to='/user/youtube'>
-                        <div className='user_home_youtube'>YouTube</div>
+                        <img className='youtube_logo' src="https://www.versionmuseum.com/images/websites/youtube-website/youtube-website%5E2017%5Eyoutube-logo-redesign-cropped.jpg" alt="youtube_logo"/>
                     </Link>
                 </div>
             </div>

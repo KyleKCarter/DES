@@ -6,8 +6,8 @@
 }
 
 .user_home_content {
-    color: whitesmoke;
-    height: 70vh;
+    background: #2b2b2bd7;
+    height: 100%;
     width: 115vh;
     display: flex;
     justify-content: space-around;
@@ -18,32 +18,22 @@
     justify-self: center;
 }
 
-.user_home_twitch {
-    height: 35vh;
+.twitch_logo {
+    height: 40vh;
     width: 25vw;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: grey;
+    margin-left: 25px;
 }
 
-.user_home_mixer {
-    height: 35vh;
+.mixer_logo {
+    height: 40vh;
     width: 25vw;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: grey;
+    margin-right: 25px;
 }
 
-.user_home_youtube {
-    height: 25vh;
+.youtube_logo {
+    height: 30vh;
     width: 55vw;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: grey;
 }

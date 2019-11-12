@@ -48,7 +48,13 @@ body{
     border: #BB0912;
     height: 10vh;
     width: 30vw;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+}
+
+.button_top:hover {
+    cursor: pointer;
+    border: rgb(153, 10, 17);
+    background: rgb(153, 10, 17);
 }
 
 .little_taste {
@@ -144,7 +150,7 @@ h2 {
 
 .entertainment_logo_section {
     width: 45%;
-    height: 90vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -165,7 +171,7 @@ h2 {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 42.2vh;
+    height: 30vh;
     margin-top: 90px;
 }
 
