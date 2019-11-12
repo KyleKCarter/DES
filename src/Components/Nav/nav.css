@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* box-shadow: 10px 5px 5px 10px rgba(29, 29, 29, 0.76); */
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 5px 0px;
 }
 
 .title {
@@ -14,12 +14,17 @@
 }
 
 ul {
-    width: 20vw;
+    width: 25vw;
     display: flex;
     justify-content: space-between;
     color: whitesmoke;
+    font-size: 18px;
 }
 
 li {
     color: whitesmoke;
+}
+
+li:hover {
+    color: rgb(251, 255, 0);
 }
