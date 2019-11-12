@@ -6,7 +6,7 @@
 }
 
 .description {
-    background: rgb(99, 99, 99);
+    background: rgba(105, 105, 105, 0.863);
     width: 40%;
     height: 70vh;
     border-radius: 5px;
@@ -16,6 +16,7 @@
     align-items: center;
     flex-direction: column;
     margin-left: 50px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
 }
 
 .text_description {

@@ -44,6 +44,11 @@ class TwitchLandingPage extends Component {
         this.props.history.push(`/user/twitch/stream/${val}`)
     }
 
+    getReviews = e => {
+        e.preventDefault();
+        this.props.history.push(`/user/reviews/Twitch`)
+    }
+
     render() {
         let mappedFollows = this.state.follows.map(val => {
             return (
@@ -54,7 +59,10 @@ class TwitchLandingPage extends Component {
         })
         return (
             <div className='twitch_user_landing_page'>
-                <h1 className='following'>Following</h1>
+                <div className='twitch_header'>
+                    <h1 className='following'>Following</h1>
+                    <button className='twitch_reviews_button' onClick={e => this.getReviews(e)}>Reviews</button>
+                </div>
                 <div className='cardSection'>{mappedFollows}</div>
             </div>
         )

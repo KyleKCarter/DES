@@ -1,0 +1,9 @@
+.reviews_landing_page_header {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2vh;
+}
+
+.reviews_landing_page_title {
+    margin: 0;
+}

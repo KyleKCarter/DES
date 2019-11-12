@@ -37,6 +37,7 @@ const { logout } = require('./Controllers/authentication/logout_controller');
 const { getTwitchId } = require('./Controllers/entertainment/twitchController');
 const { getMixerId } = require('./Controllers/entertainment/mixerController');
 const { getYoutubeId } = require('./Controllers/entertainment/youtubeController');
+const { addReview, getReviews } = require('./Controllers/reviews/reviewsController')
 
 //middleware
 const { checkForUser } = require('./Middleware/auth_middleware');
@@ -203,5 +204,9 @@ app.get('/api/mixer_profile_id', getMixerId);
 //youtube http requests
 app.post('/api/youtube_profile_id', addYouTubeProfileId);
 app.get('/api/youtube_profile_id', getYoutubeId);
+
+//reviews http requests
+app.post('/api/review/post', addReview);
+app.get('/api/reviews', getReviews);
 
 app.listen(SERVER_PORT, () => console.log(`Running on PORT ${SERVER_PORT}.`));

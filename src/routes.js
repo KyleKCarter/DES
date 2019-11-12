@@ -19,6 +19,8 @@ import MixerStreamPage from './Components/Mixer/mixerStreamPage';
 import YoutubePage from './Components/YouTube/youtubeLandingPage';
 import YoutubeVideoPage from './Components/YouTube/youtubeVideoPage';
 import YoutubeStreamPage from './Components/YouTube/youtubeStreamPage';
+import ReviewsLandingPage from './Components/Reviews/reviewsLandingPage';
+import ReviewPostPage from './Components/Reviews/reviewsPostPage';
 
 export default (
     <>
@@ -40,6 +42,8 @@ export default (
         <Route component={YoutubePage} exact path='/user/youtube' />
         <Route component={YoutubeVideoPage} path='/user/youtube/video/:videoId' />
         <Route component={YoutubeStreamPage} path='/user/youtube/stream/:streamId' />
+        <Route component={ReviewPostPage} path='/user/reviews/post' />
+        <Route component={ReviewsLandingPage} path='/user/reviews/:entertainment' />
     </Switch>
     </>
 )

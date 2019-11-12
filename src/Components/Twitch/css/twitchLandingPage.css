@@ -6,6 +6,11 @@
     background-color: #9149fc;
 }
 
+.twitch_header {
+    display: flex;
+    width: 60vw;
+}
+
 .following {
     margin: 0;
     height: 10vh;
@@ -15,6 +20,13 @@
     align-items: center;
 }
 
+.twitch_reviews_button {
+    height: 3.5vh;
+    width: 7vw;
+    align-self: center;
+    border-radius: 3px;
+}
+
 .cardSection {
     background: whitesmoke;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
@@ -22,7 +34,7 @@
 }
 
 .Following_card {
-    width: 50vw;
+    width: 40vw;
     height: 10vh;
     display: flex;
     justify-content: flex-start;
