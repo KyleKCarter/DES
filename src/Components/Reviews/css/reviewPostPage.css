@@ -56,8 +56,25 @@
     border-radius: 2px;
 }
 
+.bottom_buttons {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.cancel_button {
+    margin-right: 2.5vw;
+    width: 5vw;
+    height: 4vh;
+    border-radius: 2px;
+}
+
+.cancel_button:hover {
+    cursor: pointer;
+}
+
 .post_button {
-    align-self: flex-end;
     margin-right: 2.5vw;
     width: 5vw;
     height: 4vh;

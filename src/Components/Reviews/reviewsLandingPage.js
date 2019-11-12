@@ -26,22 +26,23 @@ class ReviewsLandingPage extends Component {
 
     render() {
         const mappedReviews = this.props.reviews.map(val => {
+            console.log(val);
             return (
                 <div className='review_content_box'>
-                    <div>{val.title}</div>
-                    <div>{val.review}</div>
+                    <div>{val.review_title}</div>
+                    <div>{val.review_text}</div>
                 </div>
             )
         })
         return (
-            <>
+            <div>
                 <div className='reviews_landing_page_header'>
                     <button onClick={e => this.goBack(e)}>Back</button>
                     <h1 className='reviews_landing_page_title'>{this.props.match.params.entertainment} Reviews</h1>
                     <button onClick={e => this.postReview(e)}>Post</button>
                 </div>
                 <div>{mappedReviews}</div>
-            </>
+            </div>
         )
     }
 }

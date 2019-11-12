@@ -24,11 +24,10 @@ export const resetFields = () => {
     }
 }
 
-export const addReview = (id, entertainment, title, review) => {
+export const addReview = (entertainment, title, review) => {
     return {
         type: ADD_REVIEW,
         payload: axios.post('/api/review/post', {
-            id: id,
             entertainment_service: entertainment,
             review_title: title,
             review_text: review
