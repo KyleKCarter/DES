@@ -54,8 +54,8 @@ class TwitchLandingPage extends Component {
         })
         return (
             <div className='twitch_user_landing_page'>
-                <h1>Following</h1>
-                <div>{mappedFollows}</div>
+                <h1 className='following'>Following</h1>
+                <div className='cardSection'>{mappedFollows}</div>
             </div>
         )
     }
