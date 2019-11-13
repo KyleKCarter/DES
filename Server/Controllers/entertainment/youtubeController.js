@@ -12,12 +12,19 @@ const getGoogleId = (req, res) => {
 const addYouTubeProfileId = (req, res) => {
     const db = req.app.get('db');
     const {id} = req.session.user;
-    db.add_youtubeProfile(id).then(response => {
-        res.status(200).json(response)
-    }).catch(error => {
-        console.log(error)
-        res.status(500).json('Cannot process request.')
-    })
+    const {youtube_profile_id} = req.body;
+    db.add_youtubeProfile(id, youtube_profile_id)
+    req.session.user = {
+        id: id,
+        youtube_profile_id
+    }
+    res.status(200).json(youtube_profile_id)
+    // .then(response => {
+    //     res.status(200).json(response)
+    // }).catch(error => {
+    //     console.log(error)
+    //     res.status(500).json('Cannot process request.')
+    // })
 }
 
 module.exports = {

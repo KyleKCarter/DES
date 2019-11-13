@@ -9,7 +9,7 @@ class SetUp extends Component {
     state = {
         error: false,
         google_profile_id: this.props.google_profile_id,
-        youtube_profile_id: this.props.youtube_profile_id,
+        youtube_profile_id: '',
         youtubeProfile_id: ''
     }
 
@@ -27,9 +27,9 @@ class SetUp extends Component {
         this.props.updateGoogleProfileId(
             google_profile_id
         )
-        const { youtube_profile_id } = this.state;
-        this.updateYoutubeProfileId(
-            youtube_profile_id
+        // const { youtubeProfile_id } = this.state;
+        this.addYoutubeProfileId(
+            // youtubeProfile_id
         )
        .then(() => {
             this.props.history.push('/user/login');
@@ -41,17 +41,25 @@ class SetUp extends Component {
     updateYoutubeProfileId = () => {
         axios.get(`https://www.googleapis.com/youtube/v3/channels?part=snippet&forUsername=${this.state.google_profile_id}&key=${process.env.REACT_APP_API_KEY3}`)
             .then(response => {
-                this.setState({ youtubeProfile_id: response.items[0].id})
+                this.setState({ youtube_profile_id: response.items[0].id})
             })
             .catch(error => {
                 console.log(error)
             })
     }
 
-    //need to add addYoutubeProfileId here
+    addYoutubeProfileId = () => {
+        axios.post('/api/youtube_profile_id')
+            .then(response => {
+                this.setState({ youtubeProfile_id: response.data})
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     render() {
-        console.log(this.props.youtube_profile_id);
+        console.log(this.state.youtube_profile_id);
         return (
             <div className='set-up_page'>
                 <div className='page_title'>ENTERTAINMENT SET UP</div>
