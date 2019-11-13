@@ -22,6 +22,7 @@
     "passport-twitch-helix": "^1.1.0",
     "passport-twitch-new": "0.0.1",
     "passport-twitch-oauth": "^1.0.0",
+    "passport-youtube-v3": "^2.1.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "^7.1.1",

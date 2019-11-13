@@ -19,7 +19,7 @@ class YouTubeVideoPage extends Component {
             <div className='page_content'>
                 <div className='link'>
                     <Link to='/user/youtube'><button>{'<'} Back</button></Link>
-                    <h1 className='video'>{video_title}</h1>
+                    <h1 className='video_title'>{video_title}</h1>
                 </div>
                 <div className='video_content'>
                     <iframe title='Video frame' src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true' width="880" height="530"></iframe>

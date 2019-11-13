@@ -10,11 +10,9 @@ class YoutubeLandingPage extends Component {
         super(props);
         this.state = {
             youtube_profile_id: '',
-            ChannelId: process.env.REACT_APP_PERSONAL_YOUTUBE_CHANNEL_ID,
             username: '',
             subscribed: [],
             video_title: '',
-            videoId: '',
             display_name: '',
             streamId: '',
             channelSection: []
@@ -22,20 +20,19 @@ class YoutubeLandingPage extends Component {
     }
 
     componentDidMount = () => {
-        this.getSubscibed();
-        // this.props.updateYoutubeProfileId().then(response => {
-        //     this.setState({ youtube_profile_id: response.value.data[0].youtube_profile_id }, () => {
-        //         this.getSubscibed();
-        //     })
-        // }).catch(error => {
-        //     console.log(error);
-        // })
+        this.props.updateYoutubeProfileId().then(response => {
+            this.setState({ youtube_profile_id: response.value.data[0].youtube_profile_id }, () => {
+                this.getSubscibed();
+            })
+        }).catch(error => {
+            console.log(error);
+        })
     }
 
     getSubscibed = () => {
-        axios.get(`https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=${this.state.ChannelId}&maxResults=50&key=${process.env.REACT_APP_API_KEY1}`)
+        axios.get(`https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=${this.state.youtube_profile_id}&maxResults=50&key=${process.env.REACT_APP_API_KEY1}`)
             .then(response => {
-                this.setState({ 
+                this.setState({
                     subscribed: response.data.items
                 })
             })
@@ -45,10 +42,9 @@ class YoutubeLandingPage extends Component {
     };
 
     getChannel = (e, val) => {
-        axios.get(`https://www.googleapis.com/youtube/v3/channelSections?part=snippet&channelId=${val}=${process.env.REACT_APP_API_KEY2}`)
+        axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${val}&maxResults=10&order=date&type=video&key=${process.env.REACT_APP_API_KEY3}`)
             .then(response => {
-                console.log(response)
-                // this.setState({ channelSection: response.data.items[0].snippet})
+                this.setState({ channelSection: response.data.items })
             })
             .catch(error => {
                 console.log(error)
@@ -56,42 +52,39 @@ class YoutubeLandingPage extends Component {
     }
 
     getVideo = (e, val) => {
-        //need to be able to pass down the videoId of the video
-        //will need to pass down the title of the video
-        e.preventDefault();
-        this.setState({ 
-            video_title: val.title,
-            videoId: val.id
-         })
         this.props.history.push(`/user/youtube/video/${val}`)
     }
 
-    getStream = (e, val) => {
-        //need to be able to pass down the streamId of the stream
-        //will need to pass down the display name of the streamer
-        e.preventDefault();
-        this.setState({
-            streamId: val.id
-        })
-        this.props.history.push(`/user/youtube/stream/${val}`)
+    getStreamId = (e, val) => {
+        axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${val}&eventType=live&type=video&key=${process.env.REACT_APP_API_KEY3}`)
+            .then(response => {
+                this.setState({
+                    streamId: response.data.items[0].id.videoId,
+                    display_name: response.data.items[0].snippet.channelTitle
+                })
+                this.getStream()
+            })
+    }
+
+    getStream = () => {
+        this.props.history.push(`/user/youtube/stream/${this.state.streamId}`)
     }
 
     render() {
-        console.log(this.state.channelSection);
-        console.log(this.state.display_name);
 
         let mappedSubscribed = this.state.subscribed.map(val => {
             return (
                 <div className='Subscribed_card'>
-                    <div className='subscribed_creator' onClick={(e) => this.getChannel(e, val.snippet.resourceId.channelId)} /*onClick={(e) => this.setState({ display_name: val.snippet.title })}*/>{val.snippet.title}</div>
+                    <div className='subscribed_creator' onClick={(e) => this.getChannel(e, val.snippet.resourceId.channelId)}>{val.snippet.title}</div>
                 </div>
             )
         })
         let mappedChannelVids = this.state.channelSection.map(val => {
-            console.log(val);
             return (
                 <div className='channel_section'>
-                    <div className='videos' onClick={(e) => this.getVideo(e, val.items[0])}>{val.title}</div>
+                    <button onClick={(e) => this.getStreamId(e, val.snippet.channelId)}>Watch Stream</button>
+                    <img className='video_thumbnail' onClick={(e) => this.getVideo(e, val.id.videoId)} src={`${val.snippet.thumbnails.default.url}`} alt="video_thumbnail" />
+                    <div className='video_title' onClick={(e) => this.getVideo(e, val.id.videoId)}>{val.snippet.title}</div>
                 </div>
             )
         })
@@ -103,10 +96,12 @@ class YoutubeLandingPage extends Component {
                 </div>
                 <div>
                     {
-                            this.state.channelSection
-                        ?
-                            <div>{mappedChannelVids}</div>
-                        :
+                        this.state.channelSection
+                            ?
+                            <div>
+                                <div>{mappedChannelVids}</div>
+                            </div>
+                            :
                             null
                     }
                 </div>

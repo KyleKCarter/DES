@@ -1,15 +1,14 @@
 import axios from 'axios';
-require('dotenv').config();
 
 const initialState = {
     twitch_profile_id: '',
     mixer_profile_id: '',
-    google_profile_id: ''
+    youtube_profile_id: ''
 }
 
 const UPDATE_TWITCH_PROFILE_ID = 'UPDATE_TWITCH_PROFILE_ID';
 const UPDATE_MIXER_PROFILE_ID = 'UPDATE_MIXER_PROFILE_ID';
-const UPDATE_GOOGLE_PROFILE_ID = 'UPDATE_GOOGLE_PROFILE_ID';
+const UPDATE_YOUTUBE_PROFILE_ID = 'UPDATE_YOUTUBE_PROFILE_ID';
 
 export const updateTwitchProfileId = () => {
     return {
@@ -25,30 +24,30 @@ export const updateMixerProfileId = () => {
     }
 }
 
-export const updateGoogleProfileId = () => {
+export const updateYoutubeProfileId = () => {
     return {
-        type: UPDATE_GOOGLE_PROFILE_ID,
-        payload: axios.post('/api/google_profile_id')
+        type: UPDATE_YOUTUBE_PROFILE_ID,
+        payload: axios.post('/api/youtube_profile_id')
     }
 }
 
 export default function reducer(state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
-        case UPDATE_TWITCH_PROFILE_ID:
+        case `${UPDATE_TWITCH_PROFILE_ID}_FULFILLED`:
             return {
                 ...state,
                 twitch_profile_id: payload.data
             };
-        case UPDATE_MIXER_PROFILE_ID:
+        case `${UPDATE_MIXER_PROFILE_ID}_FULFILLED`:
             return {
                 ...state,
                 mixer_profile_id: payload.data
             };
-        case UPDATE_GOOGLE_PROFILE_ID:
+        case `${UPDATE_YOUTUBE_PROFILE_ID}_FULFILLED`:
             return {
                 ...state,
-                google_profile_id: payload.data
+                youtube_profile_id: payload.data
             };
         default:
             return state
