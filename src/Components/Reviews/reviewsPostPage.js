@@ -31,7 +31,7 @@ class ReviewPostPage extends Component {
     }
 
     render() {
-        const { title, review, entertainment } = this.props;
+        const { title, review } = this.props;
         return (
             <div className='post_page'>
                 <h1>Post A Review</h1>

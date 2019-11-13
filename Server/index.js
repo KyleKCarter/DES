@@ -36,7 +36,7 @@ const { login } = require('./Controllers/authentication/login_controller');
 const { logout } = require('./Controllers/authentication/logout_controller');
 const { getTwitchId } = require('./Controllers/entertainment/twitchController');
 const { getMixerId } = require('./Controllers/entertainment/mixerController');
-const { getYoutubeId } = require('./Controllers/entertainment/youtubeController');
+const { getGoogleId, addYouTubeProfileId } = require('./Controllers/entertainment/youtubeController');
 const { addReview, getReviews } = require('./Controllers/reviews/reviewsController')
 
 //middleware
@@ -99,7 +99,7 @@ passport.use(
 
 // function that adds the profile id to my media table in db
 const addTwitchProfileId = (req, res) => {
-    console.log(req.session)
+    // console.log(req.session)
     const twitch_profile_id = twitchProfile.id;
     const {id} = req.session.user;
     const db = req.app.get('db');
@@ -126,7 +126,7 @@ passport.use(
 )
 
 const addMixerProfileId = (req, res) => {
-    console.log(req.session)
+    // console.log(req.session)
     const mixer_profile_id = mixerProfile.id;
     const {id} = req.session.user;
     const db = req.app.get('db');
@@ -145,25 +145,25 @@ passport.use(
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
         callbackURL: GOOGLE_CALL_BACK_URL,
-        passReqToCallback: true
+        // passReqToCallback: true
     }, (accessToken, refreshToken, profile, done) => {
 
-        googleProfile = profile;
+        googleProfile = profile.displayName;
         done(null, profile);
     })
 )
 
-const addYouTubeProfileId = (req, res) => {
-    console.log(req.session)
-    const youtube_profile_id = googleProfile.id
+const addGoogleProfileId = (req, res) => {
+    // console.log(req.session)
+    const google_profile_id = googleProfile
     const {id} = req.session.user;
     const db = req.app.get('db');
-    db.add_youtubeProfile(id, youtube_profile_id);
+    db.add_googleProfile(id, google_profile_id);
     req.session.user = {
         id: id,
-        youtube_profile_id
+        google_profile_id
     }
-    res.status(200).json(youtubeProfile);
+    res.status(200).json(googleProfile);
 }
 
 //debug function
@@ -185,8 +185,8 @@ app.get('/auth/mixer/callback', passport.authenticate('mixer', {
 }), (req, res) => {
     res.redirect('http://localhost:3000/user/set-up');
 })
-app.get('/auth/google', passport.authenticate('google', {scope:  [ 'https://www.googleapis.com/auth/plus.login',
-, 'https://www.googleapis.com/auth/plus.profile.emails.read' ]}));
+app.get('/auth/google', passport.authenticate('google', {scope:  [ 'profile', 'https://www.googleapis.com/auth/youtube' /*'https://www.googleapis.com/auth/plus.login',
+, 'https://www.googleapis.com/auth/plus.profile.emails.read'*/ ]}));
 app.get('/auth/google/callback', passport.authenticate('google', {
     forceVerify: true,
 }), function (req, res) {
@@ -201,9 +201,13 @@ app.get('/api/twitch_profile_id', getTwitchId);
 app.post('/api/mixer_profile_id', addMixerProfileId);
 app.get('/api/mixer_profile_id', getMixerId);
 
+//google http requests
+app.post('/api/google_profile_id', addGoogleProfileId);
+app.get('/api/google_profile_id', getGoogleId);
+
 //youtube http requests
 app.post('/api/youtube_profile_id', addYouTubeProfileId);
-app.get('/api/youtube_profile_id', getYoutubeId);
+// app.get('/api/youtube_profile_id', getYoutubeId);
 
 //reviews http requests
 app.post('/api/review/post', addReview);
