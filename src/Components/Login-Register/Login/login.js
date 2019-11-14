@@ -41,7 +41,7 @@ class Login extends Component {
                 {this.state.error === true ? (
                     <div className='error'>
                         <div className='error_msg'>Wrong username or password</div>
-                        <img className='error_img' src="https://66.media.tumblr.com/2feea74041feaa70ca7221ae28065f15/tumblr_ouypl7fXA11w23gl9o1_400.gifv" alt="SLJ_meme" />
+                        <img className='error_img' src="https://i.kym-cdn.com/photos/images/newsfeed/000/715/685/8a9.gif" alt="SLJ_meme" />
                     </div>
                 ) : null}
             </div>

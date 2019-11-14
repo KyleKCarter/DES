@@ -4,9 +4,6 @@ import { Link, withRouter } from 'react-router-dom';
 import { changeNav, logoutUser } from '../../Redux/Reducers/AuthReducer/AuthReducer';
 import { connect } from 'react-redux';
 
-//components
-import Entertainment from '../Entertainment/entertainment';
-
 class Nav extends Component {
     state = {
         nav: false,
@@ -20,20 +17,21 @@ class Nav extends Component {
     }
 
     handleClick = () => {
-        this.setState({ open: true })
+        this.setState({ open: !this.state.open })
     }
 
     render() {
         let entertainmentDropdown = 'entertainment';
-        if ( this.state.open === true ) {
+        if (this.state.open === true) {
             entertainmentDropdown += ' entertainment-open'
         }
+        // <Entertainment />
         return (
             <div className='navBar'>
                 <Link to='/'>
                     <div className='title'>Daily Entertainment Streaming King</div>
                 </Link>
-                <ul>
+                <ul className='parent_ul'>
                     {!this.props.user.username ?
                         <>
                             <Link to='/'>
@@ -60,7 +58,20 @@ class Nav extends Component {
                                 <li>Home</li>
                             </Link>
                             <div>|</div>
-                            <li className={entertainmentDropdown} onClick={this.handleClick}>Entertainment <Entertainment /> </li>
+                            <button className='entertainment_button' onClick={this.handleClick}>Entertainment</button>
+                            <ul className={entertainmentDropdown}>
+                                <div className='entertainment_drop_down_menu'>
+                                    <Link to='/user/twitch'>
+                                        <li onClick={this.handleClick}>Twitch</li>
+                                    </Link>
+                                    <Link to='/user/mixer'>
+                                        <li onClick={this.handleClick}>Mixer</li>
+                                    </Link>
+                                    <Link to='/user/youtube'>
+                                        <li onClick={this.handleClick}>YouTube</li>
+                                    </Link>
+                                </div>
+                            </ul>
                             <div>|</div>
                             <Link to='/user/profile'>
                                 <li>Profile</li>

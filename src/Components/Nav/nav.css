@@ -13,7 +13,7 @@
     color: whitesmoke;
 }
 
-ul {
+.parent_ul {
     width: 25vw;
     display: flex;
     justify-content: space-between;
@@ -30,20 +30,47 @@ li:hover {
     cursor: pointer;
 }
 
+.entertainment_drop_down_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: 13vh;
+    width: 9.5vw;
+    background: #111111;
+    transition: 1000ms height ease-in-out;
+}
+
+.entertainment_drop_down_menu li {
+    margin-top: 1vh;
+}
+
+.entertainment_button {
+    border: none;
+    background: none;
+    color: whitesmoke;
+    font-size: 16px;
+}
+
+.entertainment_button:hover {
+    color: rgb(251, 255, 0);
+    cursor: pointer;
+}
+
 .entertainment {
     position: fixed;
     right: 0;
-    top: 12vh;
+    top: 10vh;
     height: 0;
-    width: auto;
+    width: 0;
     transition: 1000ms height ease-in-out;
 }
 
 .entertainment-open {
     position: fixed;
-    right: 0;
-    top: 12vh;
-    height: auto;
+    right: 21vw;
+    top: 10vh;
+    height: 10vh;
     width: auto;
     transition: 1000ms height ease-in-out;
 }

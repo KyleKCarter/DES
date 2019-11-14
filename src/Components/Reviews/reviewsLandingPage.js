@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/reviewLandingPage.css';
-import { getReviews, updateEntertainment } from '../../Redux/Reducers/ReviewReducer/reviewPageReducer';
+import { getReviews, updateEntertainment, increaseJuJu, decreaseJuJu, getJuJu } from '../../Redux/Reducers/ReviewReducer/reviewPageReducer';
 import { connect } from 'react-redux';
 
 class ReviewsLandingPage extends Component {
@@ -26,6 +26,14 @@ class ReviewsLandingPage extends Component {
         this.props.history.push('/user/reviews/post');
     }
 
+    goodJuJu = () => {
+        this.props.increaseJuJu();
+    }
+
+    badJuJu = () => {
+        this.props.decreaseJuJu();
+    }
+
     goBack = () => {
         this.props.history.goBack();
     }
@@ -36,9 +44,18 @@ class ReviewsLandingPage extends Component {
             // need to add date posted
             return (
                 <div className='review_content_box'>
-                    <h1 className='review_title'>{val.review_title}</h1>
-                    <div className='review_username'>By: {val.username}</div>
-                    <div className='review_text'>{val.review_text}</div>
+                    <div className='review_juju'>
+                        {/* <div>{`&#9650`}</div> */}
+                        {/* <div>{`&#9660`}</div> */}
+                        <div onClick={() => this.goodJuJu(val.review_id)}>^</div>
+                        <div>{this.props.JuJu}</div>
+                        <div onClick={() => this.badJuJu(val.review_id)}>v</div>
+                    </div>
+                    <div className='review_content_box_review'>
+                        <h1 className='review_title'>{val.review_title}</h1>
+                        <div className='review_username'>By: {val.username}</div>
+                        <div className='review_text'>{val.review_text}</div>
+                    </div>
                 </div>
             )
         })
@@ -50,7 +67,7 @@ class ReviewsLandingPage extends Component {
                     <button onClick={e => this.postReview(e)}>Post</button>
                 </div>
                 <div className='review_content_area'>{mappedReviews}</div>
-                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
+                {this.props.loggedIn === false ? window.location.href = '/user/login' : null}
             </div>
         )
     }
@@ -60,11 +77,15 @@ const mapStateToProps = state => {
     return {
         reviews: state.reviewReducer.reviews,
         entertainment: state.reviewReducer.entertainment,
-        loggedIn: state.authReducer.loggedIn
+        loggedIn: state.authReducer.loggedIn,
+        JuJu: state.reviewReducer.JuJu
     }
 }
 
 export default connect(mapStateToProps, {
     getReviews,
-    updateEntertainment
+    updateEntertainment,
+    increaseJuJu,
+    decreaseJuJu,
+    getJuJu
 })(ReviewsLandingPage);

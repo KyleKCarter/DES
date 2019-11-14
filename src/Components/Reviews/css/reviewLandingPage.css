@@ -30,14 +30,30 @@
 
 .review_content_box {
     border: 1px solid rgba(228, 228, 228, 0.856);
+    /* border: 1px solid red; */
     width: 80%;
     height: 20vh;
     margin-top: 2.5vh;
     background: rgba(228, 228, 228, 0.856);
     box-shadow: rgba(0, 0, 0, 0.18) 0px 5px 10px 0px;
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.review_juju {
+    margin-left: 2.5vw;
+}
+
+.review_juju:hover {
+    cursor: pointer;
+}
+
+.review_content_box_review {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
+    margin-left: 3vw;
 }
 
 .review_title {

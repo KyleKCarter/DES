@@ -8,7 +8,6 @@ const session = require('express-session');
 const passport = require('passport');
 const twitchStrategy = require('passport-twitch-new').Strategy;
 const mixerStrategy = require('passport-mixer').Strategy;
-// const googleStrategy = require('passport-google-oauth2').Strategy;
 const youtubeStrategy = require('passport-youtube-v3').Strategy;
 
 
@@ -32,13 +31,14 @@ const {
 } = process.env;
 
 //controllers
-const { register, addMediaRow } = require('./Controllers/authentication/register_controller');
+const { register } = require('./Controllers/authentication/register_controller');
 const { login } = require('./Controllers/authentication/login_controller');
 const { logout } = require('./Controllers/authentication/logout_controller');
 const { getTwitchId } = require('./Controllers/entertainment/twitchController');
 const { getMixerId } = require('./Controllers/entertainment/mixerController');
 const { getYoutubeId } = require('./Controllers/entertainment/youtubeController');
-const { addReview, getReviews } = require('./Controllers/reviews/reviewsController')
+const { addReview, getReviews } = require('./Controllers/reviews/reviewsController');
+// const { increaseJuJu, decreaseJuJu, getJuJu} = require('./Controllers/reviews/jujuController');
 
 //middleware
 const { checkForUser } = require('./Middleware/auth_middleware');
@@ -205,7 +205,11 @@ app.get('/api/youtube_profile_id', getYoutubeId);
 
 //reviews http requests
 app.post('/api/review/post', addReview);
-// app.get('/api/reviews/', getReviews);
 app.get('/api/reviews/:entertainment', getReviews);
+
+//juju http requests
+// app.post('/api/review/entertainment/post/good_juju', increaseJuJu);
+// app.post('/api/review/entertainment/post/bad_juju', decreaseJuJu);
+// app.get('/api/review/entertainment/post/juju', getJuJu);
 
 app.listen(SERVER_PORT, () => console.log(`Running on PORT ${SERVER_PORT}.`));

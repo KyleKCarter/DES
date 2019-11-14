@@ -11,6 +11,7 @@ const intialState = {
 const UPDATE_STATE = 'UPDATE_STATE';
 const RESET_FIELDS = 'RESET_FIELDS';
 const ADD_REVIEW = 'ADD_REVIEW';
+// const ADD_JUJU_TABLE_ROW = 'ADD_JUJU_TABLE_ROW';
 
 export const updateState = e => {
     return {
@@ -36,6 +37,13 @@ export const addReview = (entertainment, title, username, review) => {
         })
     }
 }
+
+// export const addJuJuRow = () => {
+//     return {
+//         type: ADD_JUJU_TABLE_ROW,
+//         payload: axios.post('/api/review/')
+//     }
+// }
 
 export default function postReducer(state = intialState, action) {
     const {type, payload} = action;
