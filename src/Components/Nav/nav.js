@@ -4,9 +4,13 @@ import { Link, withRouter } from 'react-router-dom';
 import { changeNav, logoutUser } from '../../Redux/Reducers/AuthReducer/AuthReducer';
 import { connect } from 'react-redux';
 
+//components
+import Entertainment from '../Entertainment/entertainment';
+
 class Nav extends Component {
     state = {
         nav: false,
+        open: false
     }
 
     handleLogout = () => {
@@ -15,7 +19,15 @@ class Nav extends Component {
         })
     }
 
+    handleClick = () => {
+        this.setState({ open: true })
+    }
+
     render() {
+        let entertainmentDropdown = 'entertainment';
+        if ( this.state.open === true ) {
+            entertainmentDropdown += ' entertainment-open'
+        }
         return (
             <div className='navBar'>
                 <Link to='/'>
@@ -48,9 +60,7 @@ class Nav extends Component {
                                 <li>Home</li>
                             </Link>
                             <div>|</div>
-                            <Link to='/user/entertainment'>
-                                <li>Entertainment</li>
-                            </Link>
+                            <li className={entertainmentDropdown} onClick={this.handleClick}>Entertainment <Entertainment /> </li>
                             <div>|</div>
                             <Link to='/user/profile'>
                                 <li>Profile</li>

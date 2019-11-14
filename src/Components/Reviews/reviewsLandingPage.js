@@ -1,47 +1,56 @@
 import React, { Component } from 'react';
 import './css/reviewLandingPage.css';
-import { getReviews } from '../../Redux/Reducers/ReviewReducer/reviewPageReducer';
-import {connect} from 'react-redux';
+import { getReviews, updateEntertainment } from '../../Redux/Reducers/ReviewReducer/reviewPageReducer';
+import { connect } from 'react-redux';
 
 class ReviewsLandingPage extends Component {
     state = {
-        error: false
+        error: false,
+        entertainment: this.props.match.params.entertainment
     }
 
     componentDidMount() {
         this.getReviews();
+        this.updateEntertainment();
+    }
+
+    updateEntertainment = () => {
+        this.props.updateEntertainment(this.state.entertainment)
     }
 
     getReviews = () => {
-        this.props.getReviews();
+        this.props.getReviews(this.state.entertainment);
     }
 
     postReview = e => {
         this.props.history.push('/user/reviews/post');
     }
 
-    goBack = e => {
-        this.props.history.goBack()
+    goBack = () => {
+        this.props.history.goBack();
     }
 
     render() {
         const mappedReviews = this.props.reviews.map(val => {
-            console.log(val);
+            // console.log(val);
+            // need to add date posted
             return (
                 <div className='review_content_box'>
-                    <div>{val.review_title}</div>
-                    <div>{val.review_text}</div>
+                    <h1 className='review_title'>{val.review_title}</h1>
+                    <div className='review_username'>By: {val.username}</div>
+                    <div className='review_text'>{val.review_text}</div>
                 </div>
             )
         })
         return (
-            <div>
+            <div className='review_landing_page'>
                 <div className='reviews_landing_page_header'>
-                    <button onClick={e => this.goBack(e)}>Back</button>
+                    <button onClick={this.goBack}>Back</button>
                     <h1 className='reviews_landing_page_title'>{this.props.match.params.entertainment} Reviews</h1>
                     <button onClick={e => this.postReview(e)}>Post</button>
                 </div>
-                <div>{mappedReviews}</div>
+                <div className='review_content_area'>{mappedReviews}</div>
+                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
             </div>
         )
     }
@@ -49,10 +58,13 @@ class ReviewsLandingPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        reviews: state.reviewReducer.reviews
+        reviews: state.reviewReducer.reviews,
+        entertainment: state.reviewReducer.entertainment,
+        loggedIn: state.authReducer.loggedIn
     }
 }
 
 export default connect(mapStateToProps, {
-    getReviews
+    getReviews,
+    updateEntertainment
 })(ReviewsLandingPage);

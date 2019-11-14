@@ -64,6 +64,7 @@ class TwitchLandingPage extends Component {
                     <button className='twitch_reviews_button' onClick={e => this.getReviews(e)}>Reviews</button>
                 </div>
                 <div className='cardSection'>{mappedFollows}</div>
+                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
             </div>
         )
     }
@@ -72,7 +73,8 @@ class TwitchLandingPage extends Component {
 function mapStateToProps(state) {
     return {
         twitch_profile_id: state.twitchReducer.twitch_profile_id,
-        user: state.authReducer.user
+        user: state.authReducer.user,
+        loggedIn: state.authReducer.loggedIn
     }
 }
 

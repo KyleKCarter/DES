@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/youtubeStreamPage.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class YouTubeStreamPage extends Component {
     constructor(props) {
@@ -22,9 +23,16 @@ class YouTubeStreamPage extends Component {
                 <div className='video_content'>
                             <iframe title='Stream frame' width="880" height="530" src={`https://www.youtube.com/embed/${streamId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
+                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
             </div>
         )
     }
 }
 
-export default YouTubeStreamPage;
+const mapStateToProps = state => {
+    return {
+        loggedIn: state.authReducer.loggedIn
+    }
+}
+
+export default connect(mapStateToProps)(YouTubeStreamPage);

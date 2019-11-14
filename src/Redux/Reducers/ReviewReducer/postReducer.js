@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const intialState = {
     title: '',
+    username: '',
     review: '',
     entertainment: '',
     loading: false
@@ -24,12 +25,13 @@ export const resetFields = () => {
     }
 }
 
-export const addReview = (entertainment, title, review) => {
+export const addReview = (entertainment, title, username, review) => {
     return {
         type: ADD_REVIEW,
         payload: axios.post('/api/review/post', {
             entertainment_service: entertainment,
             review_title: title,
+            username: username,
             review_text: review
         })
     }

@@ -1,9 +1,9 @@
 const addReview = (req, res) => {
     const db = req.app.get('db');
-    const {entertainment_service, review_title, review_text} = req.body;
+    const {entertainment_service, review_title, username, review_text} = req.body;
     const {id} = req.session.user;
 
-    db.add_reviewPost(id, entertainment_service, review_title, review_text)
+    db.add_reviewPost(id, entertainment_service, review_title, username, review_text)
         .then(response => {
             res.status(200).json(response)
         }).catch(error => {
@@ -14,7 +14,8 @@ const addReview = (req, res) => {
 
 const getReviews = (req, res) => {
     const db = req.app.get('db');
-    db.get_reviews().then(response => {
+    const {entertainment} = req.params;
+    db.get_reviews([entertainment]).then(response => {
         res.status(200).json(response)
     }).catch(error => {
         console.log(error)

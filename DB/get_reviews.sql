@@ -1,1 +1,1 @@
-SELECT * FROM reviews;
+SELECT * FROM reviews WHERE entertainment_service = $1;

@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 
-const register = async (req, res) => {
+const register = async (req, res, next) => {
     const db = req.app.get('db');
     const {firstname, lastname, email, username, password} = req.body;
 
@@ -10,12 +10,16 @@ const register = async (req, res) => {
         const hashedPassword = bcrypt.hashSync(password, salt);
         const user = await db.register_user([firstname, lastname, email, username, hashedPassword]);
         req.session.user = {
-            id: user[0].id,
+            id: user[0].user_id,
             username,
             firstname,
             lastname
         }
-        res.status(200).json(user);
+        const newRow = await db.add_mediaRow(user[0].user_id);
+        res.status(200).json({
+            ...user,
+            newRow
+        });
     } else {
         res.status(409).json({error: "Username taken, please try another."});
     }

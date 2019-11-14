@@ -2,8 +2,14 @@
     height: 88vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+}
+
+.register_body_content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7.5vh;
 }
 
 .register_title {

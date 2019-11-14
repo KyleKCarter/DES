@@ -1,9 +1,46 @@
+.review_landing_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .reviews_landing_page_header {
     display: flex;
     justify-content: space-around;
     margin-top: 2vh;
+    width: 85%;
 }
 
 .reviews_landing_page_title {
     margin: 0;
+}
+
+.review_content_area {
+    width: 75%;
+    height: 75%;
+    margin-top: 2vh;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.review_content_box {
+    border: 1px solid rgba(228, 228, 228, 0.856);
+    width: 80%;
+    height: 20vh;
+    margin-top: 2.5vh;
+    background: rgba(228, 228, 228, 0.856);
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 5px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.review_title {
+    margin-left: 2.5vh;
+    color: black;
 }

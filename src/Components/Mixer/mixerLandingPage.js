@@ -40,6 +40,11 @@ class MixerLandingPage extends Component {
         this.props.history.push(`/user/mixer/stream/${val}`)
     }
 
+    getReviews = e => {
+        e.preventDefault();
+        this.props.history.push(`/user/reviews/Mixer`)
+    }
+
     render() {
         let mappedFollows = this.state.follows.map(val => {
             return (
@@ -50,17 +55,22 @@ class MixerLandingPage extends Component {
         })
         return (
             <div className='mixer_user_landing_page'>
-                <h1>Following</h1>
+                <div className='mixer_header'>
+                    <h1 className='following'>Following</h1>
+                    <button className='mixer_reviews_button' onClick={e => this.getReviews(e)}>Reviews</button>
+                </div>
                 <div>{mappedFollows}</div>
+                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
             </div>
         )
     }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {
         mixer_profile_id: state.mixerReducer.mixer_profile_id,
-        user: state.authReducer.user
+        user: state.authReducer.user,
+        loggedIn: state.authReducer.loggedIn
     }
 }
 

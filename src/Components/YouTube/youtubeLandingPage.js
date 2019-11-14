@@ -70,6 +70,11 @@ class YoutubeLandingPage extends Component {
         this.props.history.push(`/user/youtube/stream/${this.state.streamId}`)
     }
 
+    getReviews = e => {
+        e.preventDefault();
+        this.props.history.push(`/user/reviews/YouTube`)
+    }
+
     render() {
 
         let mappedSubscribed = this.state.subscribed.map(val => {
@@ -91,7 +96,10 @@ class YoutubeLandingPage extends Component {
         return (
             <div className='youtube_user_landing_page'>
                 <div className='subscribed_section'>
-                    <h1>Subscribed</h1>
+                    <div className='youtube_header'>
+                        <h1 className='subscribed'>Subscribed</h1>
+                        <button className='mixer_reviews_button' onClick={e => this.getReviews(e)}>Reviews</button>
+                    </div>
                     <div>{mappedSubscribed}</div>
                 </div>
                 <div>
@@ -105,6 +113,7 @@ class YoutubeLandingPage extends Component {
                             null
                     }
                 </div>
+                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
             </div>
         )
     }
@@ -113,7 +122,8 @@ class YoutubeLandingPage extends Component {
 function mapStateToProps(state) {
     return {
         youtube_profile_id: state.youtubeReducer.youtube_profile_id,
-        user: state.authReducer.user
+        user: state.authReducer.user,
+        loggedIn: state.authReducer.loggedIn
     }
 }
 

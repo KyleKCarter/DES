@@ -27,4 +27,23 @@ li {
 
 li:hover {
     color: rgb(251, 255, 0);
+    cursor: pointer;
+}
+
+.entertainment {
+    position: fixed;
+    right: 0;
+    top: 12vh;
+    height: 0;
+    width: auto;
+    transition: 1000ms height ease-in-out;
+}
+
+.entertainment-open {
+    position: fixed;
+    right: 0;
+    top: 12vh;
+    height: auto;
+    width: auto;
+    transition: 1000ms height ease-in-out;
 }

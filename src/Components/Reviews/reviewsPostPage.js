@@ -14,10 +14,11 @@ class ReviewPostPage extends Component {
 
     addReview = e => {
         // e.preventDefault();
-        const { entertainment, title, review } = this.props;
+        const { entertainment, title, username, review } = this.props;
         this.props.addReview(
             entertainment,
             title,
+            username,
             review
         ).then(() => {
             this.props.history.push(`/user/reviews/${this.props.entertainment}`)
@@ -31,7 +32,7 @@ class ReviewPostPage extends Component {
     }
 
     render() {
-        const { title, review } = this.props;
+        const { title, username, review } = this.props;
         return (
             <div className='post_page'>
                 <h1>Post A Review</h1>
@@ -50,6 +51,10 @@ class ReviewPostPage extends Component {
                             </select>
                         </div>
                     </div>
+                    <div className='username_input_review'>
+                        <h3>Username:</h3>
+                        <input className='username_input_review_field' type="text" onChange={this.handleChange} name="username" value={username} />
+                    </div>
                     <div className='text_box'>
                         <h3>Review:</h3>
                         <textarea className='review_field' onChange={this.handleChange} name="review" value={review} cols="30" rows="10"></textarea>
@@ -59,6 +64,7 @@ class ReviewPostPage extends Component {
                         <button className='post_button' onClick={this.addReview}>Post</button>
                     </div>
                 </div>
+                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
             </div>
         )
     }
@@ -67,8 +73,10 @@ class ReviewPostPage extends Component {
 const mapStateToProps = state => {
     return {
         title: state.postReducer.title,
+        username: state.postReducer.username,
         review: state.postReducer.review,
-        entertainment: state.postReducer.entertainment
+        entertainment: state.postReducer.entertainment,
+        loggedIn: state.authReducer.loggedIn
     }
 }
 

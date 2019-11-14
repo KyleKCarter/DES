@@ -29,7 +29,6 @@
 }
 
 .title_field {
-    height: 3vh;
     width: 15vw;
 }
 
@@ -42,11 +41,20 @@
     height: 3vh;
 }
 
+.username_input_review {
+    width: 15vw;
+    margin-left: 2.5vw;
+}
+
+.username_input_review_field {
+    width: 15vw;
+}
+
 .text_box {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 25vh;
+    height: 30vh;
     margin-left: 2.5vw;
 }
 

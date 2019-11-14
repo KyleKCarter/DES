@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./css/twitchStreamPage.css";
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class TwitchStreamPage extends Component {
     constructor(props) {
@@ -22,9 +23,16 @@ class TwitchStreamPage extends Component {
                     <iframe title="Streamer's player frame" src={`https://player.twitch.tv/?channel=${display_name}`} frameborder="0" allowfullscreen="true" scrolling="no" height="550" width="790"></iframe>
                     <iframe title="Streamer's chat frame" src={`https://www.twitch.tv/embed/${display_name}/chat`} frameborder="0" scrolling="no" height="550" width="350"></iframe>
                 </div>
+                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
             </div>
         )
     }
 }
 
-export default TwitchStreamPage;
+const mapStateToProps = state => {
+    return {
+        loggedIn: state.authReducer.loggedIn
+    }
+}
+
+export default connect(mapStateToProps)(TwitchStreamPage);

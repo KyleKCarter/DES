@@ -2,8 +2,14 @@
     height: 88vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+}
+
+.login_body_content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7.5vh;
 }
 
 .login_title {
@@ -14,6 +20,21 @@ form {
     color: rgb(235, 223, 223);
 }
 
+.error {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5vw;
+}
+
+.error_img {
+    height: 30vh;
+    width: 25vw;
+}
+
 .error_msg {
     color: rgb(235, 223, 223);
+    font-size: 20px;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+    align-self: center;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './home.css';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {
@@ -17,9 +18,16 @@ class Home extends Component {
                         <img className='youtube_logo' src="https://www.versionmuseum.com/images/websites/youtube-website/youtube-website%5E2017%5Eyoutube-logo-redesign-cropped.jpg" alt="youtube_logo"/>
                     </Link>
                 </div>
+                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
             </div>
         )
     }
 }
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        loggedIn: state.authReducer.loggedIn
+    }
+}
+
+export default connect(mapStateToProps)(Home);

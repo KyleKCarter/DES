@@ -11,7 +11,6 @@ import Register from './Components/Login-Register/Register/register';
 import Login from './Components/Login-Register/Login/login';
 import SetUp from './Components/Accout Set Up/setUp';
 import Profile from './Components/Profile/profile';
-import Entertainment from './Components/Entertainment/entertainment';
 import TwitchPage from './Components/Twitch/twitchLandingPage';
 import TwitchStreamPage from './Components/Twitch/twitchStreamPage';
 import MixerPage from './Components/Mixer/mixerLandingPage';
@@ -34,7 +33,6 @@ export default (
         <Route component={SetUp} path='/user/set-up' />
         <Route component={Login} path='/user/login' />
         <Route component={Profile} path='/user/profile' />
-        <Route component={Entertainment} path='/user/entertainment' />
         <Route component={TwitchPage} exact path='/user/twitch' />
         <Route component={TwitchStreamPage} path='/user/twitch/stream/:display_name' />
         <Route component={MixerPage} exact path='/user/mixer' />

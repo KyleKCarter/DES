@@ -8,6 +8,7 @@ const initialState = {
     password: '',
     loading: false,
     nav: false,
+    loggedIn: false,
     user: {}
 }
 
