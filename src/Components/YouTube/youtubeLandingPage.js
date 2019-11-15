@@ -15,7 +15,8 @@ class YoutubeLandingPage extends Component {
             video_title: '',
             display_name: '',
             streamId: '',
-            channelSection: []
+            channelSection: [],
+            open: false
         }
     }
 
@@ -42,9 +43,12 @@ class YoutubeLandingPage extends Component {
     };
 
     getChannel = (e, val) => {
-        axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${val}&maxResults=10&order=date&type=video&key=${process.env.REACT_APP_API_KEY3}`)
+        axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${val}&maxResults=48&order=date&type=video&key=${process.env.REACT_APP_API_KEY3}`)
             .then(response => {
-                this.setState({ channelSection: response.data.items })
+                this.setState({ 
+                    channelSection: response.data.items,
+                    open: !this.state.open
+                 })
             })
             .catch(error => {
                 console.log(error)
@@ -87,33 +91,37 @@ class YoutubeLandingPage extends Component {
         let mappedChannelVids = this.state.channelSection.map(val => {
             return (
                 <div className='channel_section'>
-                    <button onClick={(e) => this.getStreamId(e, val.snippet.channelId)}>Watch Stream</button>
-                    <img className='video_thumbnail' onClick={(e) => this.getVideo(e, val.id.videoId)} src={`${val.snippet.thumbnails.default.url}`} alt="video_thumbnail" />
+                    <button className='stream_button' onClick={(e) => this.getStreamId(e, val.snippet.channelId)}>Watch Stream</button>
+                    <img className='video_thumbnail' onClick={(e) => this.getVideo(e, val.id.videoId)} src={`${val.snippet.thumbnails.high.url}`} alt="video_thumbnail" />
                     <div className='video_title' onClick={(e) => this.getVideo(e, val.id.videoId)}>{val.snippet.title}</div>
                 </div>
             )
         })
+        let entertainmentSideMenu = 'entertainment_youtube';
+        if (this.state.open === true) {
+            entertainmentSideMenu += ' entertainment_youtube-open'
+        }
         return (
             <div className='youtube_user_landing_page'>
                 <div className='subscribed_section'>
                     <div className='youtube_header'>
                         <h1 className='subscribed'>Subscribed</h1>
-                        <button className='mixer_reviews_button' onClick={e => this.getReviews(e)}>Reviews</button>
+                        <button className='youtube_reviews_button' onClick={e => this.getReviews(e)}>Reviews</button>
                     </div>
-                    <div>{mappedSubscribed}</div>
+                    <div className='channel_section_box'>
+                        <div>{mappedSubscribed}</div>
+                        {
+                            this.state.channelSection
+                                ?
+                                <div className={entertainmentSideMenu}>
+                                    <div className='channel_videos'>{mappedChannelVids}</div>
+                                </div>
+                                :
+                                null
+                        }
+                    </div>
                 </div>
-                <div>
-                    {
-                        this.state.channelSection
-                            ?
-                            <div>
-                                <div>{mappedChannelVids}</div>
-                            </div>
-                            :
-                            null
-                    }
-                </div>
-                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
+                {this.props.loggedIn === false ? window.location.href = '/user/login' : null}
             </div>
         )
     }

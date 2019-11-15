@@ -37,12 +37,21 @@ li:hover {
     width: auto;
     height: 13vh;
     width: 9.5vw;
-    background: #111111;
+    /* background: #111111; */
+    background-color: lightgray;
     transition: 1000ms height ease-in-out;
 }
 
-.entertainment_drop_down_menu li {
-    margin-top: 1vh;
+.entertainment_drop_down_menu button {
+    width: 9.5vw;
+    height: 4.4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: none;
+    border: none;
+    text-decoration: none;
 }
 
 .entertainment_button {
@@ -60,17 +69,65 @@ li:hover {
 .entertainment {
     position: fixed;
     right: 0;
-    top: 10vh;
+    top: 12vh;
     height: 0;
     width: 0;
     transition: 1000ms height ease-in-out;
+    animation: menuCloseAnimation;
+    animation-duration: 300ms;
+    animation-delay: (150ms * li) - 300;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 .entertainment-open {
     position: fixed;
     right: 21vw;
-    top: 10vh;
+    top: 12vh;
     height: 10vh;
     width: auto;
     transition: 1000ms height ease-in-out;
+    animation: dropDownAnimation;
+    animation-duration: 300ms;
+    animation-delay: (150ms * li) - 300;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes dropDownAnimation {
+    0% {
+        opacity: 0;
+        transform: rotateX(-90deg)
+    }
+
+    50% {
+        transform: rotateX(40deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg)
+    }
+        
+}
+
+@keyframes menuCloseAnimation {
+    0% {
+        opacity: 0;
+        transform: rotateX(0deg)
+    }
+
+    50% {
+        transform: rotateX(40deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateX(-90deg)
+    }
+}
+
+.entertainment_drop_down_menu button:hover {
+    background-color: rgb(165, 165, 165);
+    cursor: pointer;
 }

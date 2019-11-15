@@ -16,21 +16,21 @@ class MixerStreamPage extends Component {
         return (
             <div className='page_content'>
                 <div className='link'>
-                    <Link to='/user/mixer'><button>{'<'}Back</button></Link>
+                    <Link to='/user/mixer'><button className='back_button'>{'<'}Back</button></Link>
                     <h1 className='streamer'>{this.state.display_name}</h1>
                 </div>
                 <div className='stream_content'>
                     <iframe title="Streamer's player frame" allowfullscreen="true" src={`https://mixer.com/embed/player/${display_name}?disableLowLatency=1`} width="790" height="550"> </iframe>
                     <iframe title="Streamer's chat frame" allowfullscreen="true" src={`https://mixer.com/embed/chat/${display_name}`} width="350" height="550"> </iframe>
                 </div>
-                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
+                {this.props.loggedIn === false ? window.location.href = '/user/login' : null}
             </div>
         )
     }
 }
 
 const mapStateToProps = state => {
-    return{
+    return {
         loggedIn: state.authReducer.loggedIn
     }
 }

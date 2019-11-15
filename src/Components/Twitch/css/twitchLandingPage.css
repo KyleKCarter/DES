@@ -8,6 +8,7 @@
 
 .twitch_header {
     display: flex;
+    justify-content: space-between;
     width: 60vw;
 }
 
@@ -21,7 +22,7 @@
 }
 
 .twitch_reviews_button {
-    height: 3.5vh;
+    height: 4vh;
     width: 7vw;
     align-self: center;
     border-radius: 3px;

@@ -47,7 +47,6 @@ class SetUp extends Component {
                     <a href="http://localhost:5555/auth/youtube"><button>Log in with YouTube</button></a>
                 </div>
                 <button onClick={this.onClickComplete}>COMPLETE</button>
-                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
             </div>
         )
     }
@@ -58,7 +57,6 @@ const mapStateToProps = state => {
         twitch_profile_id: state.accountSetUpReducer.twitch_profile_id,
         mixer_profile_id: state.accountSetUpReducer.mixer_profile_id,
         youtube_profile_id: state.accountSetUpReducer.youtube_profile_id,
-        loggedIn: state.authReducer.loggedIn
     }
 }
 

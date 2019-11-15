@@ -14,9 +14,22 @@
     flex-direction: row;
 }
 
-.streamer {
-    font-size: 25px;
+.back_button:hover {
+    border: #00204E;
+    background-color: #00204E;
+    cursor: pointer;
     color: whitesmoke;
+}
+
+.streamer {
+    color: rgb(233, 233, 233);
+    font-size: 40px;
+    margin-right: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px #00204E;
 }
 
 .stream_content {

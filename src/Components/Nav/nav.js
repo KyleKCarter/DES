@@ -62,13 +62,13 @@ class Nav extends Component {
                             <ul className={entertainmentDropdown}>
                                 <div className='entertainment_drop_down_menu'>
                                     <Link to='/user/twitch'>
-                                        <li onClick={this.handleClick}>Twitch</li>
+                                        <button onClick={this.handleClick}>Twitch</button>
                                     </Link>
                                     <Link to='/user/mixer'>
-                                        <li onClick={this.handleClick}>Mixer</li>
+                                        <button onClick={this.handleClick}>Mixer</button>
                                     </Link>
                                     <Link to='/user/youtube'>
-                                        <li onClick={this.handleClick}>YouTube</li>
+                                        <button onClick={this.handleClick}>YouTube</button>
                                     </Link>
                                 </div>
                             </ul>

@@ -59,7 +59,7 @@ class MixerLandingPage extends Component {
                     <h1 className='following'>Following</h1>
                     <button className='mixer_reviews_button' onClick={e => this.getReviews(e)}>Reviews</button>
                 </div>
-                <div>{mappedFollows}</div>
+                <div className='mixer_card_section'>{mappedFollows}</div>
                 {this.props.loggedIn === false ? window.location.href='/user/login' : null }
             </div>
         )
