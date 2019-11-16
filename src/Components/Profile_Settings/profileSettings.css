@@ -1,0 +1,224 @@
+.settings_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.settings_header {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    align-self: center;
+    margin-top: 2.5vh;
+}
+
+.settings_title {
+    margin: 0;
+    color: white;
+    font-size: 30px;
+}
+
+.settings_cancel_button {
+    align-self: center;
+    color: white;
+    font-size: 20px;
+}
+
+.settings_cancel_button:hover {
+    cursor: pointer;
+    color: gold;
+}
+
+.settings_menu {
+    border-bottom: 1px solid rgba(155, 155, 155, 0.699);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+    color: rgb(235, 235, 235);
+    width: 15vw;
+    height: 4.5vh;
+    margin-left: 7vh;
+    margin-top: 2.5vh;
+}
+
+.settings_menu:hover h4{
+    cursor: pointer;
+}
+
+.profile_section_title {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    margin-left: 7vh;
+    width: 15vw;
+    font-size: 25px;
+    color: rgb(204, 204, 204);
+    margin-top: 3.5vh;
+}
+
+.profile_picture_section {
+    border: 3px solid rgb(68, 68, 68);
+    border-radius: 5px;
+    background-color: rgb(80, 80, 80);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+    height: 25vh;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    margin-left: 7vh;
+    margin-top: 1.5vh;
+}
+
+.profile_picture_settings {
+    width: 20vh;
+    height: 19vh;
+    border-radius: 75px;
+    margin-left: 2.5vw;
+}
+
+.profile_picture_update_button_area {
+    height: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 2.5vw;
+}
+
+.profile_picture_update_button {
+    height: 4vh;
+    width: 15vw;
+    border-radius: 5px;
+    background-color: #3A3A3D;
+    border: #3A3A3D;
+    color: #EFEFF1;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.profile_picture_update_button:hover {
+    cursor: pointer;
+    background-color: rgb(68, 68, 68);
+}
+
+.profile_picture_update_text {
+    align-self: flex-start;
+    color: #dedee3;
+    margin: 0;
+}
+
+.profile_picture_update_input_area {
+    width: 19.5vw;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 2vw;
+}
+
+.profile_picture_update_input_area input {
+    width: 15vw;
+}
+
+.profile_picture_update_input_area div {
+    color: #EFEFF1;
+}
+
+.profile_picture_update_input_area div:hover {
+    cursor: pointer;
+    border-bottom: 1px solid #EFEFF1;
+}
+
+.profile_settings_section {
+    border: 2px solid rgb(68, 68, 68);
+    border-radius: 5px;
+    background-color: rgb(80, 80, 80);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+    height: 45vh;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 7vh;
+    margin-top: 1.5vh;
+    margin-bottom: 10vh;
+    color: #f7f7f8;    
+}
+
+.username_section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgb(48, 48, 48);
+    width: 100%;
+    height: 15vh;
+}
+
+.username_input_field_section {
+    display: flex;
+    flex-direction: column;
+}
+
+.username_edit_input {
+    border-radius: 5px;
+    border: #efeff1;
+    width: 30vw;
+    height: 3vh;
+    background-color: #efeff14f;
+}
+
+.username_input_field_section p {
+    font-size: 12px;
+    align-self: flex-start;
+    margin-top: 1vh;
+}
+
+.bio_section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgb(48, 48, 48);
+    width: 100%;
+    height: 30vh;
+    color: #f7f7f8;    
+}
+
+.text_box_area {
+    display: flex;
+    flex-direction: column;
+}
+
+.text_box_input {
+    background-color: #efeff14f;
+    border: #efeff1;
+}
+
+.text_box_area p {
+    font-size: 12px;
+    margin-top: 1vh;
+}
+
+.button_section {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.save_changes_button {
+    border-radius: 5px;
+    margin-right: 2.5vw;
+    height: 4vh;
+    width: 8vw;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: rgba(255, 217, 0, 0.781);
+    border: gold;
+    color: #ffffff
+}
+
+.save_changes_button:hover {
+    cursor: pointer;
+}

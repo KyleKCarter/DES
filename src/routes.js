@@ -20,6 +20,7 @@ import YoutubeVideoPage from './Components/YouTube/youtubeVideoPage';
 import YoutubeStreamPage from './Components/YouTube/youtubeStreamPage';
 import ReviewsLandingPage from './Components/Reviews/reviewsLandingPage';
 import ReviewPostPage from './Components/Reviews/reviewsPostPage';
+import ProfileSettings from './Components/Profile_Settings/profileSettings';
 
 export default (
     <>
@@ -32,7 +33,7 @@ export default (
         <Route component={Register} path='/user/register' />
         <Route component={SetUp} path='/user/set-up' />
         <Route component={Login} path='/user/login' />
-        <Route component={Profile} path='/user/profile' />
+        <Route component={Profile} exact path='/user/profile' />
         <Route component={TwitchPage} exact path='/user/twitch' />
         <Route component={TwitchStreamPage} path='/user/twitch/stream/:display_name' />
         <Route component={MixerPage} exact path='/user/mixer' />
@@ -42,6 +43,7 @@ export default (
         <Route component={YoutubeStreamPage} path='/user/youtube/stream/:streamId' />
         <Route component={ReviewPostPage} path='/user/reviews/post' />
         <Route component={ReviewsLandingPage} path='/user/reviews/:entertainment' />
+        <Route component={ProfileSettings} path='/user/profile/settings' />
     </Switch>
     </>
 )

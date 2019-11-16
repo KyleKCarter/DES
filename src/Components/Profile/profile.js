@@ -6,9 +6,11 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                <div>Profile</div>
-                <Link to='/user/set-up'><button>Entertainment Settings</button></Link>
-                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
+                <div className='profile_header'>
+                    <h1>{this.props.username}</h1>
+                    <Link to='/user/profile/settings'><button>Account Settings</button></Link>
+                </div>
+                {/* {this.props.loggedIn === false ? window.location.href = '/user/login' : null} */}
             </div>
         )
     }
@@ -16,7 +18,8 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
     return {
-        loggedIn: state.authReducer.loggedIn
+        // loggedIn: state.authReducer.loggedIn,
+        username: state.authReducer.username
     }
 }
 

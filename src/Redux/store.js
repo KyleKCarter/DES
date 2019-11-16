@@ -9,6 +9,7 @@ import mixerReducer from './Reducers/EntertainmentReducers/mixerReducer';
 import youtubeReducer from './Reducers/EntertainmentReducers/youtubeReducer';
 import postReducer from './Reducers/ReviewReducer/postReducer';
 import reviewReducer from './Reducers/ReviewReducer/reviewPageReducer'
+import settingsReducer from './Reducers/ProfileReducer/settingsReducer';
 
 const root = combineReducers ({
     authReducer,
@@ -17,7 +18,8 @@ const root = combineReducers ({
     mixerReducer,
     youtubeReducer,
     postReducer,
-    reviewReducer
+    reviewReducer,
+    settingsReducer
 });
 
 export default createStore(root, applyMiddleware(promise));
