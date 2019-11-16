@@ -9,7 +9,7 @@
     justify-content: flex-end;
     align-items: center;
     width: 90%;
-    margin-top: 2%;
+    margin-top: 1.5%;
 }
 
 .profile_header button {
@@ -28,12 +28,12 @@
     align-items: center;
     width: 32%;
     margin-left: 10%;
-    margin-top: 2%;
 }
 
 .profile_pic {
-    height: 32vh;
-    width: 20vw;
+    height: 90%;
+    width: 70%;
+    border-radius: 100%;
 }
 
 .profile_username {
@@ -52,6 +52,10 @@
     height: 4.5vh;
     margin-left: 10%;
     margin-top: 3%;
+}
+
+.description_reviews_menu:hover {
+    cursor: pointer;
 }
 
 .user_bio_section {
@@ -100,11 +104,9 @@
 }
 
 .user_review_content_box_area {
-    border: 1px solid blue;
     width: 90%;
     padding: 1%;
+    margin-top: 2.5%;
+    background-color: rgba(170, 170, 170, 0.699);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
 }
-
-/* .user_review_title {
-    border: 1px solid green;
-} */

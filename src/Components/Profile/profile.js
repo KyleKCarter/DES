@@ -32,6 +32,7 @@ class Profile extends Component {
                 <div className='user_review_content_box_area'>
                     <h1 className='user_review_title'>{val.review_title}</h1>
                     <div className='user_review_username'>By: {val.username}</div>
+                    <div>{val.entertainment_service}</div>
                     <div className='user_review_text'>{val.review_text}</div>
                 </div>
             )

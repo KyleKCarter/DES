@@ -84,7 +84,7 @@ class ProfileSettings extends Component {
                         <>
                             <h3 className='profile_section_title'>Profile Picture</h3>
                             <div className='profile_picture_section'>
-                                <img className='profile_picture_settings' src={this.props.userImg} alt="scump" />
+                                <img className='profile_picture_settings' src={this.props.userImg} alt="profile_pic" />
                                 <div className='profile_picture_update_button_area'>
                                     <button className='profile_picture_update_button' onClick={this.imageUpdate}>Update Profile Picture</button>
                                     <h5 className='profile_picture_update_text'>Must be an image url</h5>

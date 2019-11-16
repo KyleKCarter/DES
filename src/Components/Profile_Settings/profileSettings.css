@@ -73,7 +73,7 @@
 .profile_picture_settings {
     width: 20vh;
     height: 19vh;
-    border-radius: 75px;
+    border-radius: 100%;
     margin-left: 2.5vw;
 }
 
