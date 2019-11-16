@@ -39,6 +39,7 @@ const { getMixerId } = require('./Controllers/entertainment/mixerController');
 const { getYoutubeId } = require('./Controllers/entertainment/youtubeController');
 const { addReview, getReviews } = require('./Controllers/reviews/reviewsController');
 const { updateImg, updateProfile, getUserImg } = require('./Controllers/profile/profileSettingsController');
+const { getUserProfile, getUserReviews } = require('./Controllers/profile/profileController');
 // const { increaseJuJu, decreaseJuJu, getJuJu} = require('./Controllers/reviews/jujuController');
 
 //middleware
@@ -216,6 +217,8 @@ app.get('/api/reviews/:entertainment', getReviews);
 //profile http requests
 app.put('/api/user/profile/settings/image/:id', updateImg);
 app.put('/api/user/profile/settings/:id', updateProfile);
-app.get('/api/user/profile/:id', getUserImg);
+app.get('/api/user/profile/image/:id', getUserImg);
+app.get('/api/user/profile/:id', getUserProfile);
+app.get('/api/user/profile/reviews/:id', getUserReviews);
 
 app.listen(SERVER_PORT, () => console.log(`Running on PORT ${SERVER_PORT}.`));

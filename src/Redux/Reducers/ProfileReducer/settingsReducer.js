@@ -65,7 +65,7 @@ export const resetFields = () => {
 export const getUserInfo = (id) => {
     return {
         type: GET_USER_IMG,
-        payload: axios.get(`/api/user/profile/${id}`)
+        payload: axios.get(`/api/user/profile/image/${id}`)
     }
 }
 

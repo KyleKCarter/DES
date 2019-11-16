@@ -1,0 +1,110 @@
+.profile_page {
+    display: flex;
+    flex-direction: column;
+    height: 100%
+}
+
+.profile_header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 90%;
+    margin-top: 2%;
+}
+
+.profile_header button {
+    height: 4vh;
+    border-radius: 5px;
+}
+
+.profile_header button:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.profile_user_information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 32%;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+.profile_pic {
+    height: 32vh;
+    width: 20vw;
+}
+
+.profile_username {
+    margin: 0;
+    font-size: 45px;
+}
+
+.description_reviews_menu {
+    border-bottom: 1px solid rgba(155, 155, 155, 0.699);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
+    color: rgb(235, 235, 235);
+    width: 25%;
+    height: 4.5vh;
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
+.user_bio_section {
+    background-color: rgb(100, 100, 100);
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+    margin-bottom: 5%;
+}
+
+.user_bio {
+    background-color: rgba(165, 165, 165, 0.678);
+    width: 90%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding: 2%;
+    color: rgba(31, 26, 26, 0.904);
+}
+
+.user_reviews_section {
+    background-color: rgb(100, 100, 100);
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+    margin-bottom: 5%;
+}
+
+.user_review_content_area {
+    width: 85%;
+    height: 40vh;
+    margin: 2% 0% 2% 0%;
+    background-color: rgba(65, 65, 65, 0.808);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.user_review_content_box_area {
+    border: 1px solid blue;
+    width: 90%;
+    padding: 1%;
+}
+
+/* .user_review_title {
+    border: 1px solid green;
+} */
