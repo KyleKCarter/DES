@@ -34,6 +34,7 @@
     height: 90%;
     width: 70%;
     border-radius: 100%;
+    margin-right: 7%;
 }
 
 .profile_username {
@@ -109,4 +110,22 @@
     margin-top: 2.5%;
     background-color: rgba(170, 170, 170, 0.699);
     box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+}
+
+.top_of_review {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit_delete {
+    margin-right: 1%;
+    width: 4%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.541);
+}
+
+.edit_delete i:hover {
+    cursor: pointer;
 }

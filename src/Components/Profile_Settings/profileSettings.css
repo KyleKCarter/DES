@@ -222,3 +222,86 @@
 .save_changes_button:hover {
     cursor: pointer;
 }
+
+.unlink_twitch_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 70px;
+    background-color: #9149fc;
+    border: none;
+    color: #ffffffd8;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    border-radius: 3px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 2% 0% 0% 3.5%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+}
+
+.unlink_twitch_logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 12px;
+}
+
+.unlink_mixer_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 70px;
+    background-color: #00204E;
+    border: none;
+    color: #ffffffd8;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    border-radius: 3px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 2% 0% 0% 3.5%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+}
+
+.unlink_mixer_logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 12px;
+}
+
+.unlink_youtube_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 70px;
+    background-color: whitesmoke;
+    border: none;
+    color: #141414d8;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    border-radius: 3px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin: 2% 0% 5% 3.5%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+}
+
+.unlink_youtube_logo {
+    width: 60px;
+    height: 40px;
+    margin-right: 12px;
+}
+
+.entertainment_settings button:hover {
+    cursor: pointer;
+    border: 2px solid rgba(64, 73, 80, 0.863);
+}

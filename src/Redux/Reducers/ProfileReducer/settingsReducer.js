@@ -15,6 +15,9 @@ const UPDATE_PROFILE_IMG = 'UPDATE_PROFILE_IMG';
 const UPDATE_PROFILE = 'UPDATE_PROFILE';
 const RESET_FIELDS = 'RESET_FIELDS';
 const GET_USER_IMG = 'GET_USER_IMG';
+const REMOVE_TWITCH_PROFILE = 'REMOVE_TWITCH_PROFILE'
+const REMOVE_MIXER_PROFILE = 'REMOVE_MIXER_PROFILE'
+const REMOVE_YOUTUBE_PROFILE = 'REMOVE_YOUTUBE_PROFILE'
 
 export const updateIMG = e => {
     return {
@@ -69,6 +72,33 @@ export const getUserInfo = (id) => {
     }
 }
 
+export const removeTwitch = (id) => {
+    return {
+        type: REMOVE_TWITCH_PROFILE,
+        payload: axios.put(`/api/user/profile/settings/twitch/${id}`, {
+            twitch_profile_id: ''
+        })
+    }
+}
+
+export const removeMixer = (id) => {
+    return {
+        type: REMOVE_MIXER_PROFILE,
+        payload: axios.put(`/api/user/profile/settings/mixer/${id}`, {
+            mixer_profile_id: ''
+        })
+    }
+}
+
+export const removeYoutube = (id) => {
+    return {
+        type: REMOVE_YOUTUBE_PROFILE,
+        payload: axios.put(`/api/user/profile/settings/youtube/${id}`, {
+            youtube_profile_id: ''
+        })
+    }
+}
+
 export default function settingsReducer (state = initialState, action) {
     const {type, payload} = action;
     switch(type) {
@@ -108,6 +138,24 @@ export default function settingsReducer (state = initialState, action) {
                 ...state,
                 loading: false,
                 userImg: payload.data[0].img
+            }
+        case `${REMOVE_TWITCH_PROFILE}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                payload: payload.data
+            }
+        case `${REMOVE_MIXER_PROFILE}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                payload: payload.data
+            }
+        case `${REMOVE_YOUTUBE_PROFILE}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                payload: payload.data
             }
         default:
             return state;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './profile.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getUserInfo, getUserReviews } from '../../Redux/Reducers/ProfileReducer/profileReducer';
+import { getUserInfo, getUserReviews, deleteUserReview } from '../../Redux/Reducers/ProfileReducer/profileReducer';
 
 class Profile extends Component {
     state = {
@@ -23,6 +23,12 @@ class Profile extends Component {
         this.setState({ menuView: 'reviews' });
     }
 
+    deleteReview = async(val) => {
+        const {id} = this.props.user
+        await this.props.deleteUserReview(val);
+        await this.props.getUserReviews(id);
+    }
+
     render() {
         const { username } = this.props;
         const { img, date_joined, bio } = this.props.userProfile;
@@ -30,7 +36,13 @@ class Profile extends Component {
         const mappedReviews = this.props.userReviews.map(val => {
             return (
                 <div className='user_review_content_box_area'>
-                    <h1 className='user_review_title'>{val.review_title}</h1>
+                    <div className='top_of_review'>
+                        <h1 className='user_review_title'>{val.review_title}</h1>
+                        <div className='edit_delete'>
+                            <i class="fas fa-pen-square"></i>
+                            <i onClick={() => this.deleteReview(val.review_id)} class="fas fa-trash-alt"></i>
+                        </div>
+                    </div>
                     <div className='user_review_username'>By: {val.username}</div>
                     <div>{val.entertainment_service}</div>
                     <div className='user_review_text'>{val.review_text}</div>
@@ -76,7 +88,7 @@ class Profile extends Component {
                         :
                         null
                 }
-                {/* {this.props.loggedIn === false ? window.location.href = '/user/login' : null} */}
+                {this.props.loggedIn === false ? window.location.href = '/user/login' : null}
             </div>
         )
     }
@@ -84,7 +96,7 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
     return {
-        // loggedIn: state.authReducer.loggedIn,
+        loggedIn: state.authReducer.loggedIn,
         username: state.authReducer.username,
         user: state.authReducer.user,
         userProfile: state.profileReducer.userProfile,
@@ -94,5 +106,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     getUserInfo,
-    getUserReviews
+    getUserReviews,
+    deleteUserReview
 })(Profile);

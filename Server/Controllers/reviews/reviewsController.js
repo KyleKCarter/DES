@@ -5,13 +5,13 @@ const addReview = async(req, res) => {
 
     const newReview = await db.add_reviewPost(id, entertainment_service, review_title, username, review_text)
 
-        const {review_id} = req.body
-        console.log(review_id)
-        const addRow = await db.add_jujuRow(review_id);
-        res.status(200).json({
-            ...newReview,
-            addRow
-        })
+        // const {review_id} = req.body
+        // console.log(review_id)
+        // const addRow = await db.add_jujuRow(review_id);
+        // res.status(200).json({
+        //     ...newReview,
+        //     addRow
+        // })
 }
 
 const getReviews = (req, res) => {
@@ -25,7 +25,15 @@ const getReviews = (req, res) => {
     })
 }
 
+const deleteUserReview = async(req, res) => {
+    const db = req.app.get('db');
+    const {id} = req.params;
+    const deletedReview = await db.delete_userReview(id);
+    res.status(200).json(deletedReview);
+}
+
 module.exports = {
     addReview,
-    getReviews
+    getReviews,
+    deleteUserReview
 }

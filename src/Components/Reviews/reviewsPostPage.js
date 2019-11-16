@@ -12,8 +12,8 @@ class ReviewPostPage extends Component {
         this.props.updateState({ [e.target.name]: e.target.value })
     }
 
-    addReview = e => {
-        // e.preventDefault();
+    addReview = () => {
+        console.log(this.props.entertainment)
         const { entertainment, title, username, review } = this.props;
         this.props.addReview(
             entertainment,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './profileSettings.css';
-import { updateIMG, updateUsername, updateBio, updateProfileImg, updateProfile, getUserInfo } from '../../Redux/Reducers/ProfileReducer/settingsReducer';
+import { updateIMG, updateUsername, updateBio, updateProfileImg, updateProfile, getUserInfo, removeTwitch, removeMixer, removeYoutube } from '../../Redux/Reducers/ProfileReducer/settingsReducer';
 import { connect } from 'react-redux';
 
 class ProfileSettings extends Component {
@@ -66,6 +66,27 @@ class ProfileSettings extends Component {
         await this.props.history.push('/user/profile/');
     }
 
+    removeTwitchProfile = async() => {
+        const {id} = this.props.user;
+        await this.props.removeTwitch(
+            id
+        )
+    }
+
+    removeMixerProfile = async() => {
+        const {id} = this.props.user;
+        await this.props.removeMixer(
+            id
+        )
+    }
+
+    removeYoutubeProfile = async() => {
+        const {id} = this.props.user;
+        await this.props.removeYoutube(
+            id
+        )
+    }
+
     render() {
         const { img, username, bio } = this.props;
         return (
@@ -127,20 +148,17 @@ class ProfileSettings extends Component {
                 {
                     this.state.settingsView === 'entertainment'
                         ?
-                        <>
+                        <div className='entertainment_settings'>
                             <div>
-                                <h1>Twitch</h1>
-                                <button>Unlink Twitch Account</button>
+                                <button className='unlink_twitch_button' onClick={this.removeTwitchProfile}><img className='unlink_twitch_logo' src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2019/09/3-twitch-is-rebranding-for-the-first-time.jpg" alt="twitch_logo" />Unlink Twitch Account</button>
                             </div>
                             <div>
-                                <h1>Mixer</h1>
-                                <button>Unlink Mixer Account</button>
+                                <button className='unlink_mixer_button' onClick={this.removeMixerProfile}><img className='unlink_mixer_logo' src="https://files.startupranking.com/startup/thumb/52553_dae09bc2ebff123b43708bf949cea0cf095281d2_mixer_m.png" alt="mixer_logo" />Unlink Mixer Account</button>
                             </div>
                             <div>
-                                <h1>YouTube</h1>
-                                <button>Unlink YouTube Account</button>
+                                <button className='unlink_youtube_button' onClick={this.removeYoutubeProfile}><img className='unlink_youtube_logo' src="https://www.yachtstarship.com/wp-content/uploads/2016/09/Youtube-Logo-Vector-300x212.png" alt="youtube_logo" />Unlink YouTube Account</button>
                             </div>
-                        </>
+                        </div>
                         :
                         null
                 }
@@ -167,5 +185,8 @@ export default connect(mapStateToProps, {
     updateBio,
     updateProfileImg,
     updateProfile,
-    getUserInfo
+    getUserInfo,
+    removeTwitch,
+    removeMixer,
+    removeYoutube
 })(ProfileSettings);

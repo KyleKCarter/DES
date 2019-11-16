@@ -37,8 +37,8 @@ const { logout } = require('./Controllers/authentication/logout_controller');
 const { getTwitchId } = require('./Controllers/entertainment/twitchController');
 const { getMixerId } = require('./Controllers/entertainment/mixerController');
 const { getYoutubeId } = require('./Controllers/entertainment/youtubeController');
-const { addReview, getReviews } = require('./Controllers/reviews/reviewsController');
-const { updateImg, updateProfile, getUserImg } = require('./Controllers/profile/profileSettingsController');
+const { addReview, getReviews, deleteUserReview } = require('./Controllers/reviews/reviewsController');
+const { updateImg, updateProfile, getUserImg, removeTwitch, removeMixer, removeYoutube } = require('./Controllers/profile/profileSettingsController');
 const { getUserProfile, getUserReviews } = require('./Controllers/profile/profileController');
 // const { increaseJuJu, decreaseJuJu, getJuJu} = require('./Controllers/reviews/jujuController');
 
@@ -208,6 +208,7 @@ app.get('/api/youtube_profile_id', getYoutubeId);
 //reviews http requests
 app.post('/api/review/post', addReview);
 app.get('/api/reviews/:entertainment', getReviews);
+app.delete('/api/review/delete/:id', deleteUserReview);
 
 //juju http requests
 // app.post('/api/review/entertainment/post/good_juju', increaseJuJu);
@@ -220,5 +221,8 @@ app.put('/api/user/profile/settings/:id', updateProfile);
 app.get('/api/user/profile/image/:id', getUserImg);
 app.get('/api/user/profile/:id', getUserProfile);
 app.get('/api/user/profile/reviews/:id', getUserReviews);
+app.put('/api/user/profile/settings/twitch/:id', removeTwitch);
+app.put('/api/user/profile/settings/mixer/:id', removeMixer);
+app.put('/api/user/profile/settings/youtube/:id', removeYoutube);
 
 app.listen(SERVER_PORT, () => console.log(`Running on PORT ${SERVER_PORT}.`));
