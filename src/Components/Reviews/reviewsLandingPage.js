@@ -45,11 +45,9 @@ class ReviewsLandingPage extends Component {
             return (
                 <div className='review_content_box'>
                     <div className='review_juju'>
-                        {/* <div>{`&#9650`}</div> */}
-                        {/* <div>{`&#9660`}</div> */}
-                        <div onClick={() => this.goodJuJu(val.review_id)}>^</div>
-                        <div>{this.props.JuJu}</div>
-                        <div onClick={() => this.badJuJu(val.review_id)}>v</div>
+                        <div onClick={() => this.goodJuJu(val.review_id)}><i class="fas fa-caret-up"></i></div>
+                        <div className='juju_number'>{this.props.JuJu}</div>
+                        <div onClick={() => this.badJuJu(val.review_id)}><i class="fas fa-caret-down"></i></div>
                     </div>
                     <div className='review_content_box_review'>
                         <h1 className='review_title'>{val.review_title}</h1>

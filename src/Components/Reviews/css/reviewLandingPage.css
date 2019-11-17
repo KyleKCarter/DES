@@ -46,10 +46,21 @@
 
 .review_juju {
     margin-left: 2.5vw;
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.review_juju:hover {
+.review_juju i:hover {
     cursor: pointer;
+    color: rgb(255, 225, 58);
+}
+
+.review_juju i {
+    font-size: 200%;
+    color: rgb(29, 29, 29);
 }
 
 .review_content_box_review {

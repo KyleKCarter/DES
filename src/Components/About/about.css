@@ -20,11 +20,21 @@
 }
 
 .text_description {
-    color: whitesmoke;
+    color: rgb(223, 223, 223);
     width: 90%;
     font-size: 25px;
     padding: 20px;
     text-align: left;
+    line-height: 34px;
+}
+
+.text_description_middle {
+    color: rgb(32, 32, 32);
+    width: 90%;
+    font-size: 25px;
+    padding: 20px;
+    text-align: left;
+    line-height: 34px;
 }
 
 .streams {

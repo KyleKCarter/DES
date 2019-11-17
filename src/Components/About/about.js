@@ -7,16 +7,15 @@ class About extends Component {
             <div className='about_content'>
                 <div className='description'>
                     <p className='text_description'>
-                        Do you enjoy flipping between many entertainment services in a short period of time? Ever get tired of having to do so? Well
+                        Do you enjoy changing between entertainment services in a short period of time? Getting tired of it? Well
                         look no further, DESK is here to help.
                     </p>
-                    <p className='text_description'>
+                    <p className='text_description_middle'>
                         Daily Entertainment Streaming King is a one of a kind streaming service that allows users to navigate to and from their favorite entertainment with ease.
-                        A user will start their journey by registering and selecting the entertainment they would like to view.
                     </p>
                     <p className='text_description'>
                         DESK was designed to make watching entertainment stressfree, easy, and fun. Plus the best
-                        part is that you will have all of your favorite entertainment services all on your desk...hassle free!
+                        part is you will have all your favorite entertainment services all on your desk...hassle free!
                     </p>
                 </div>
                 <div className='streams'>

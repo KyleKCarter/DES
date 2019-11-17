@@ -47,7 +47,7 @@ class YoutubeLandingPage extends Component {
             .then(response => {
                 this.setState({ 
                     channelSection: response.data.items,
-                    open: !this.state.open
+                    open: true
                  })
             })
             .catch(error => {

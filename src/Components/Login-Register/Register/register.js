@@ -37,21 +37,33 @@ class Register extends Component {
         return (
             <div className='register_body'>
                 <div className='register_body_content'>
-                    <div className='register_title'>Register</div>
+                    <div className='register_title'>logo goes here</div>
                     <div>
                         <form className='register_form' type='submit'>
-                            <div>First Name:</div>
-                            <input className='register_input' name='firstname' onChange={this.handleChange} />
-                            <div>Last Name:</div>
-                            <input className='register_input' name='lastname' onChange={this.handleChange} />
-                            <div>Email:</div>
-                            <input className='register_input' name='email' onChange={this.handleChange} />
-                            <div>Username:</div>
-                            <input className='register_input' name='username' onChange={this.handleChange} />
-                            <div>Password:</div>
-                            <input className='register_input' type="password" name='password' onChange={this.handleChange} />
+                            <div>
+                                <div className='register_description'>First Name:</div>
+                                <input className='register_input' name='firstname' onChange={this.handleChange} />
+                            </div>
+                            <div>
+                                <div className='register_description'>Last Name:</div>
+                                <input className='register_input' name='lastname' onChange={this.handleChange} />
+                            </div>
+                            <div>
+                                <div className='register_description'>Email:</div>
+                                <input className='register_input' name='email' onChange={this.handleChange} />
+                            </div>
+                            <div>
+                                <div className='register_description'>Username:</div>
+                                <input className='register_input' name='username' onChange={this.handleChange} />
+                            </div>
+                            <div>
+                                <div className='register_description'>Password:</div>
+                                <input className='register_input' type="password" name='password' onChange={this.handleChange} />
+                            </div>
                         </form>
-                        <button onClick={this.handleRegister}>Register</button>
+                        <div className='register_button_area'>
+                            <button className='register_button' onClick={this.handleRegister}>Register</button>
+                        </div>
                     </div>
                 </div>
                 {this.state.error === true ? (
