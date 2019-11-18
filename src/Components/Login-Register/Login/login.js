@@ -17,6 +17,7 @@ class Login extends Component {
         e.preventDefault();
         this.props.loginUser(this.props.username, this.props.password).then(() => {
             this.props.updateState({ loggedIn: true })
+            console.log(this.props.loggedIn);
             this.props.history.push('/user/home');
         }).catch(() => {
             this.setState({ error: true });
@@ -38,7 +39,7 @@ class Login extends Component {
                         </form>
                         <button className='login_button' onClick={this.clickLogin}>LOGIN</button>
                         <div className='register_link_in_login'>
-                            <p>New to DEST?</p>
+                            <p>New to DESK?</p>
                             <Link to='/user/register'><div>Sign up</div></Link>
                         </div>
                     </div>

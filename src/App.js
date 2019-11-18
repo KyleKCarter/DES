@@ -5,14 +5,17 @@ import routes from './routes';
 import { connect } from 'react-redux';
 
 //reducers
-import {changeNav, logoutUser} from './Redux/Reducers/AuthReducer/AuthReducer';
+import {changeNav, logoutUser, getLoggedInStatus} from './Redux/Reducers/AuthReducer/AuthReducer';
 
 class App extends Component {
   state = {
     nav: false
   }
-
+  componentDidMount() {
+    this.props.getLoggedInStatus();
+  }
   render() {
+    console.log(this.props.loggedIn, this.props.user);
     return (
       <BrowserRouter>
         <div className="App">
@@ -26,11 +29,13 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     nav: state.authReducer.nav,
-    user: state.authReducer.user
+    user: state.authReducer.user,
+    loggedIn: state.authReducer.loggedIn
   }
 }
 
 export default connect(mapStateToProps, {
   changeNav,
-  logoutUser
+  logoutUser,
+  getLoggedInStatus
 })(App);

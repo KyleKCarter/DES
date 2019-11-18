@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import './profile.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getUserInfo, getUserReviews, deleteUserReview } from '../../Redux/Reducers/ProfileReducer/profileReducer';
+import { getUserInfo, getUserReviews, updateState, editUserReview, deleteUserReview } from '../../Redux/Reducers/ProfileReducer/profileReducer';
 
 class Profile extends Component {
     state = {
-        menuView: 'description'
+        menuView: 'description',
+        editView: false,
+        reviewId: ''
     }
 
     componentDidMount() {
@@ -23,14 +25,40 @@ class Profile extends Component {
         this.setState({ menuView: 'reviews' });
     }
 
-    deleteReview = async(val) => {
+    editView = (val) => {
+        this.setState({ 
+            editView: true,
+            reviewId: val
+         })
+    }
+
+    handleChangeEdit = e => {
+        this.props.updateState({ [e.target.name]: e.target.value })
+    }
+
+    editReview = async() => {
         const {id} = this.props.user
+        const {review_title, review_text} = this.props;
+        const {reviewId} = this.state;
+        await this.props.editUserReview(
+            reviewId,
+            review_title,
+            review_text
+            );
+        this.setState({ editView: false })
+        await this.props.getUserReviews(id);
+    }
+
+    deleteReview = async (val) => {
+        const { id } = this.props.user
         await this.props.deleteUserReview(val);
         await this.props.getUserReviews(id);
     }
 
     render() {
-        const { username } = this.props;
+        console.log(this.props.review_title)
+        console.log(this.props.review_text)
+        const { username, review_title, review_text } = this.props;
         const { img, date_joined, bio } = this.props.userProfile;
 
         const mappedReviews = this.props.userReviews.map(val => {
@@ -39,7 +67,7 @@ class Profile extends Component {
                     <div className='top_of_review'>
                         <h1 className='user_review_title'>{val.review_title}</h1>
                         <div className='edit_delete'>
-                            <i class="fas fa-pen-square"></i>
+                            <i onClick={() => this.editView(val.review_id)} class="fas fa-pen-square"></i>
                             <i onClick={() => this.deleteReview(val.review_id)} class="fas fa-trash-alt"></i>
                         </div>
                     </div>
@@ -80,11 +108,23 @@ class Profile extends Component {
                 {
                     this.state.menuView === 'reviews'
                         ?
-                        <>
-                            <div className='user_reviews_section'>
-                                <div className='user_review_content_area'>{mappedReviews}</div>
+                        this.state.editView === false
+                            ?
+                            <>
+                                <div className='user_reviews_section'>
+                                    <div className='user_review_content_area'>{mappedReviews}</div>
+                                </div>
+                            </>
+                            :
+                            this.state.editView === true
+                            ?
+                            <div>
+                                <input placeholder='Title' onChange={this.handleChangeEdit} name='review_title' value={review_title} type="text" />
+                                <textarea placeholder='Review' onChange={this.handleChangeEdit} name="review_text" value={review_text} cols="30" rows="10"></textarea>
+                                <button onClick={() => this.editReview()}>Submit</button>
                             </div>
-                        </>
+                            :
+                            null
                         :
                         null
                 }
@@ -100,12 +140,16 @@ const mapStateToProps = state => {
         username: state.authReducer.username,
         user: state.authReducer.user,
         userProfile: state.profileReducer.userProfile,
-        userReviews: state.profileReducer.userReviews
+        userReviews: state.profileReducer.userReviews,
+        review_title: state.profileReducer.review_title,
+        review_text: state.profileReducer.review_text
     }
 }
 
 export default connect(mapStateToProps, {
     getUserInfo,
     getUserReviews,
+    updateState,
+    editUserReview,
     deleteUserReview
 })(Profile);

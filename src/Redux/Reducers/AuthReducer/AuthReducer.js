@@ -9,6 +9,7 @@ const initialState = {
     loading: false,
     nav: false,
     loggedIn: false,
+    finishedChecking: "johndumb",
     user: {}
 }
 
@@ -18,6 +19,14 @@ const CHANGE_NAV = 'CHANGE_NAV';
 const REGISTER_USER = 'REGISTER_USER';
 const LOGIN_USER = 'LOGIN_USER';
 const LOGOUT_USER = 'LOGOUT_USER';
+const GET_LOGGED_IN_STATUS = "GET_LOGGED_IN_STATUS";
+
+export const getLoggedInStatus = e => {
+    return {
+        type: GET_LOGGED_IN_STATUS,
+        payload: axios.get("/auth/user")
+    }
+}
 
 export const updateState = e => {
     return {
@@ -71,6 +80,19 @@ export const logoutUser = () => {
 export default function authReducer(state = initialState, action) {
     const {type, payload} = action;
     switch(type) {
+        case `${GET_LOGGED_IN_STATUS}_FULFILLED`:
+            return {
+                ...state,
+                user: payload.data.user,
+                loggedIn: payload.data.isLoggedIn,
+                finishedChecking: "johnstilldumb"
+            }
+        case `${GET_LOGGED_IN_STATUS}_REJECTED`:
+            return {
+                ...state,
+                loggedIn: payload.data.isLoggedIn,
+                finishedChecking: "johnstilldumb"
+            }
         case UPDATE_STATE:
             return {
                 ...state,
@@ -89,6 +111,7 @@ export default function authReducer(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
+                loggedIn: true,
                 payload: payload.data
             }
         case `${LOGIN_USER}_PENDING`:
@@ -101,6 +124,7 @@ export default function authReducer(state = initialState, action) {
                 ...state,
                 loading: false,
                 nav: true,
+                loggedIn: true,
                 user: payload.data
             };
         case `${LOGOUT_USER}_PENDING`:

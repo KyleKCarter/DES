@@ -37,16 +37,23 @@ class SetUp extends Component {
         })
     }
 
+    setUpLater = () => {
+        this.props.history.push('/user/home')
+    }
+
     render() {
+        // console.log(this.props.loggedIn)
         return (
             <div className='set-up_page'>
                 <div className='page_title'>ENTERTAINMENT SET UP</div>
                 <div className='set-up_content'>
-                    <a href="http://localhost:5555/auth/twitch"><button>Log in with Twitch</button></a>
-                    <a href="http://localhost:5555/auth/mixer"><button>Log in with Mixer</button></a>
-                    <a href="http://localhost:5555/auth/youtube"><button>Log in with YouTube</button></a>
+                    <a href="http://localhost:5555/auth/twitch/set-up"><button>Log in with Twitch</button></a>
+                    <a href="http://localhost:5555/auth/mixer/"><button>Log in with Mixer</button></a>
+                    <a href="http://localhost:5555/auth/youtube/"><button>Log in with YouTube</button></a>
                 </div>
                 <button onClick={this.onClickComplete}>COMPLETE</button>
+                <button onClick={this.setUpLater}>Set up later</button>
+                {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href = '/user/login' : null}
             </div>
         )
     }
@@ -54,9 +61,11 @@ class SetUp extends Component {
 
 const mapStateToProps = state => {
     return {
+        loggedIn: state.authReducer.loggedIn,
         twitch_profile_id: state.accountSetUpReducer.twitch_profile_id,
         mixer_profile_id: state.accountSetUpReducer.mixer_profile_id,
         youtube_profile_id: state.accountSetUpReducer.youtube_profile_id,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 

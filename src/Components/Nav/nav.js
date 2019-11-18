@@ -12,6 +12,7 @@ class Nav extends Component {
 
     handleLogout = () => {
         this.props.logoutUser().then(() => {
+            this.props.updateState({ loggedIn: false })
             this.props.history.push('/');
         })
     }
@@ -92,7 +93,8 @@ class Nav extends Component {
 const mapStateToProps = state => {
     return {
         nav: state.authReducer.nav,
-        user: state.authReducer.user
+        user: state.authReducer.user,
+        loggedIn: state.authReducer.loggedIn
     }
 }
 

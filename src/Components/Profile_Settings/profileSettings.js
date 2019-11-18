@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './profileSettings.css';
 import { updateIMG, updateUsername, updateBio, updateProfileImg, updateProfile, getUserInfo, removeTwitch, removeMixer, removeYoutube } from '../../Redux/Reducers/ProfileReducer/settingsReducer';
+import {updateTwitchProfileId, updateMixerProfileId, updateYoutubeProfileId} from '../../Redux/Reducers/AccountSetUpReducer/AccountSetUpReducer'
 import { connect } from 'react-redux';
 
 class ProfileSettings extends Component {
@@ -87,6 +88,30 @@ class ProfileSettings extends Component {
         )
     }
 
+    // handleCompleteLink = () => {
+    //     const { twitch_profile_id } = this.props;
+    //     this.props.updateTwitchProfileId(
+    //        twitch_profile_id
+    //        )
+    //     const { mixer_profile_id} = this.props
+    //     this.props.updateMixerProfileId(
+    //         mixer_profile_id
+    //     )
+    //     const { youtube_profile_id } = this.props;
+    //     this.props.updateYoutubeProfileId(
+    //         youtube_profile_id
+    //     )
+    //    .then(() => {
+    //         this.props.history.push('/user/profile/settings');
+    //     }).catch(() => {
+    //         this.setState({ error: true })
+    //     })
+    // }
+
+    accountSetUp = () => {
+        this.props.history.push('/user/set-up');
+    }
+
     render() {
         const { img, username, bio } = this.props;
         return (
@@ -151,13 +176,18 @@ class ProfileSettings extends Component {
                         <div className='entertainment_settings'>
                             <div>
                                 <button className='unlink_twitch_button' onClick={this.removeTwitchProfile}><img className='unlink_twitch_logo' src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2019/09/3-twitch-is-rebranding-for-the-first-time.jpg" alt="twitch_logo" />Unlink Twitch Account</button>
+                                {/* <a href="http://localhost:5555/auth/twitch/set-up"><button className='link_twitch_logo'><img className='unlink_twitch_logo' src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2019/09/3-twitch-is-rebranding-for-the-first-time.jpg" alt="twitch_logo" />Link Twitch</button></a> */}
+                                <button className='link_account_button' onClick={this.accountSetUp}>Link Accounts</button>
                             </div>
                             <div>
                                 <button className='unlink_mixer_button' onClick={this.removeMixerProfile}><img className='unlink_mixer_logo' src="https://files.startupranking.com/startup/thumb/52553_dae09bc2ebff123b43708bf949cea0cf095281d2_mixer_m.png" alt="mixer_logo" />Unlink Mixer Account</button>
+                                {/* <a href="http://localhost:5555/auth/mixer/"><button className='link_mixer_logo'><img className='unlink_mixer_logo' src="https://files.startupranking.com/startup/thumb/52553_dae09bc2ebff123b43708bf949cea0cf095281d2_mixer_m.png" alt="mixer_logo" />Link Mixer</button></a> */}
                             </div>
                             <div>
                                 <button className='unlink_youtube_button' onClick={this.removeYoutubeProfile}><img className='unlink_youtube_logo' src="https://www.yachtstarship.com/wp-content/uploads/2016/09/Youtube-Logo-Vector-300x212.png" alt="youtube_logo" />Unlink YouTube Account</button>
+                                {/* <a href="http://localhost:5555/auth/youtube/"><button className='link_youtube_logo'><img className='unlink_youtube_logo' src="https://www.yachtstarship.com/wp-content/uploads/2016/09/Youtube-Logo-Vector-300x212.png" alt="youtube_logo" />Link YouTube</button></a> */}
                             </div>
+                            {/* <button onClick={this.handleCompleteLink}>Complete</button> */}
                         </div>
                         :
                         null
@@ -175,7 +205,10 @@ const mapStateToProps = state => {
         username: state.settingsReducer.username,
         bio: state.settingsReducer.bio,
         user: state.authReducer.user,
-        userImg: state.settingsReducer.userImg
+        userImg: state.settingsReducer.userImg,
+        twitch_profile_id: state.accountSetUpReducer.twitch_profile_id,
+        mixer_profile_id: state.accountSetUpReducer.mixer_profile_id,
+        youtube_profile_id: state.accountSetUpReducer.youtube_profile_id
     }
 }
 
@@ -188,5 +221,8 @@ export default connect(mapStateToProps, {
     getUserInfo,
     removeTwitch,
     removeMixer,
-    removeYoutube
+    removeYoutube,
+    updateTwitchProfileId,
+    updateMixerProfileId,
+    updateYoutubeProfileId
 })(ProfileSettings);

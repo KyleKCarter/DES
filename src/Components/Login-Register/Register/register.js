@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './register.css';
-import { resetFields, updateState, registerUser } from '../../../Redux/Reducers/AuthReducer/AuthReducer';
+import { resetFields, updateState, registerUser, loginUser } from '../../../Redux/Reducers/AuthReducer/AuthReducer';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Register extends Component {
     state = {
@@ -17,20 +18,38 @@ class Register extends Component {
         this.props.updateState({ [e.target.name]: e.target.value })
     ];
 
-    handleRegister = e => {
+    handleRegister = async (e) => {
         e.preventDefault();
         const { firstname, lastname, email, username, password } = this.props;
-        this.props.registerUser(
+        await this.props.registerUser(
             firstname,
             lastname,
             email,
             username,
             password
         ).then(() => {
-            this.props.history.push('/user/set-up');
+            this.props.loginUser(this.props.username, this.props.password)
+            this.props.updateState({ loggedIn: true })
         }).catch(() => {
             this.setState({ error: true });
         })
+        await axios({
+            method: "POST",
+            url: "http://localhost:5555/send",
+            data: {
+                name: firstname,
+                email: email
+            }
+        }).then(response => {
+            if (response.data.msg === 'success') {
+                alert('Message Sent.');
+            } else if(response.data.msg === 'fail'){
+                alert('Message failed to send.')
+            }
+        }).catch(error => {
+            console.log(error);
+        })
+        await this.props.history.push('/user/set-up');
     }
 
     render() {
@@ -83,12 +102,14 @@ const mapStateToProps = state => {
         lastname: state.authReducer.lastname,
         email: state.authReducer.email,
         username: state.authReducer.username,
-        password: state.authReducer.password
+        password: state.authReducer.password,
+        loggedIn: state.authReducer.loggedIn
     }
 }
 
 export default connect(mapStateToProps, {
     updateState,
     resetFields,
-    registerUser
+    registerUser,
+    loginUser
 })(Register);

@@ -223,6 +223,12 @@
     cursor: pointer;
 }
 
+.entertainment_settings div {
+    /* border: 1px solid red; */
+    margin: 2% 0% 2% 3.5%;
+    display: flex;
+}
+
 .unlink_twitch_button {
     display: flex;
     justify-content: center;
@@ -239,9 +245,29 @@
     border-radius: 3px;
     padding-left: 16px;
     padding-right: 16px;
-    margin: 2% 0% 0% 3.5%;
+    margin-right: 5%;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
 }
+
+/* .link_twitch_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 70px;
+    background-color: #9149fc;
+    border: none;
+    color: #ffffffd8;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    border-radius: 3px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-right: 5%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+} */
 
 .unlink_twitch_logo {
     width: 60px;
@@ -265,9 +291,29 @@
     border-radius: 3px;
     padding-left: 16px;
     padding-right: 16px;
-    margin: 2% 0% 0% 3.5%;
+    margin-right: 5%;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
 }
+
+/* .link_mixer_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 70px;
+    background-color: #00204E;
+    border: none;
+    color: #ffffffd8;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    border-radius: 3px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-right: 5%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+} */
 
 .unlink_mixer_logo {
     width: 50px;
@@ -291,9 +337,29 @@
     border-radius: 3px;
     padding-left: 16px;
     padding-right: 16px;
-    margin: 2% 0% 5% 3.5%;
+    margin-right: 5%;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
 }
+
+/* .link_youtube_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 70px;
+    background-color: whitesmoke;
+    border: none;
+    color: #141414d8;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    border-radius: 3px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-right: 5%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+} */
 
 .unlink_youtube_logo {
     width: 60px;
@@ -301,7 +367,28 @@
     margin-right: 12px;
 }
 
+.link_account_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 70px;
+    background-color: #5a565f;
+    border: none;
+    color: #ffffffd8;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    border-radius: 3px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-right: 5%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
+}
+
 .entertainment_settings button:hover {
     cursor: pointer;
-    border: 2px solid rgba(64, 73, 80, 0.863);
+    width: 299px;
+    height: 69px;
 }
