@@ -12,7 +12,6 @@ class Nav extends Component {
 
     handleLogout = () => {
         this.props.logoutUser().then(() => {
-            this.props.updateState({ loggedIn: false })
             this.props.history.push('/');
         })
     }
@@ -38,10 +37,10 @@ class Nav extends Component {
                             <Link to='/'>
                                 <li>Home</li>
                             </Link>
-                            <div>|</div>
+                            {/* <div>|</div>
                             <Link to='/about'>
                                 <li>About</li>
-                            </Link>
+                            </Link> */}
                             <div>|</div>
                             <Link to='/user/register'>
                                 <li>Register</li>
@@ -84,6 +83,7 @@ class Nav extends Component {
                         </>
                         : null
                     }
+                    {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href='/user/login' : null }
                 </ul>
             </div>
         )
@@ -94,7 +94,8 @@ const mapStateToProps = state => {
     return {
         nav: state.authReducer.nav,
         user: state.authReducer.user,
-        loggedIn: state.authReducer.loggedIn
+        loggedIn: state.authReducer.loggedIn,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 

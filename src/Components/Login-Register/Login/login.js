@@ -17,7 +17,6 @@ class Login extends Component {
         e.preventDefault();
         this.props.loginUser(this.props.username, this.props.password).then(() => {
             this.props.updateState({ loggedIn: true })
-            console.log(this.props.loggedIn);
             this.props.history.push('/user/home');
         }).catch(() => {
             this.setState({ error: true });
@@ -28,6 +27,7 @@ class Login extends Component {
         // console.log(this.props.history);
         return (
             <div className='login_body'>
+                <div className='fake_nav_bar'></div>
                 <div className='login_body_content'>
                     <div className='login_title'>Login</div>
                     <div>

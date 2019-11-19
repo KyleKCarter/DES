@@ -56,10 +56,10 @@ class Profile extends Component {
     }
 
     render() {
-        console.log(this.props.review_title)
-        console.log(this.props.review_text)
-        const { username, review_title, review_text } = this.props;
-        const { img, date_joined, bio } = this.props.userProfile;
+        console.log(this.props.userProfile)
+        console.log(this.props.userProfile.bio)
+        const { review_title, review_text } = this.props;
+        const { username, img, date_joined, bio } = this.props.userProfile;
 
         const mappedReviews = this.props.userReviews.map(val => {
             return (
@@ -80,6 +80,7 @@ class Profile extends Component {
 
         return (
             <div className='profile_page'>
+                <div className='fake_nav_bar'></div>
                 <div className='profile_header'>
                     <Link to='/user/profile/settings'><button>Account Settings</button></Link>
                 </div>
@@ -128,7 +129,7 @@ class Profile extends Component {
                         :
                         null
                 }
-                {this.props.loggedIn === false ? window.location.href = '/user/login' : null}
+                {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href = '/user/login' : null}
             </div>
         )
     }
@@ -142,7 +143,8 @@ const mapStateToProps = state => {
         userProfile: state.profileReducer.userProfile,
         userReviews: state.profileReducer.userReviews,
         review_title: state.profileReducer.review_title,
-        review_text: state.profileReducer.review_text
+        review_text: state.profileReducer.review_text,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 

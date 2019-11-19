@@ -54,14 +54,17 @@ class MixerLandingPage extends Component {
             )
         })
         return (
+            <>
+            <div className='fake_nav_bar'></div>
             <div className='mixer_user_landing_page'>
                 <div className='mixer_header'>
                     <h1 className='following'>Following</h1>
                     <button className='mixer_reviews_button' onClick={e => this.getReviews(e)}>Reviews</button>
                 </div>
                 <div className='mixer_card_section'>{mappedFollows}</div>
-                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
+                {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href='/user/login' : null }
             </div>
+            </>
         )
     }
 }
@@ -70,7 +73,8 @@ const mapStateToProps = (state) => {
     return {
         mixer_profile_id: state.mixerReducer.mixer_profile_id,
         user: state.authReducer.user,
-        loggedIn: state.authReducer.loggedIn
+        loggedIn: state.authReducer.loggedIn,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 

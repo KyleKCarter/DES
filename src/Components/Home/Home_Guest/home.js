@@ -6,6 +6,7 @@ class Home extends Component {
     render() {
         return (
             <body>
+                <div className='fake_nav_bar'></div>
                 <div className='content'>
                     <Link to='/user/register'>
                         <button className='button_top'>
@@ -25,12 +26,35 @@ class Home extends Component {
                         </div>
                         <div className='little_taste_mixer'>
                             <img className='mixer_symbol' src="https://media.comicbook.com/2019/04/mixer-1168878-1280x0.jpeg" alt="mixer_symbol" />
-                            <iframe title="NepentheZ's player frame" allowfullscreen="true" src="https://mixer.com/embed/player/NepentheZ?disableLowLatency=1" width="400" height="249"> </iframe>
+                            <iframe title="shroud's player frame" allowfullscreen="true" src="https://mixer.com/embed/player/shroud?disableLowLatency=1" width="400" height="249"> </iframe>
+
                         </div>
                         <div className='little_taste_youtube'>
                             <img className='youtube_symbol' src="https://www.versionmuseum.com/images/websites/youtube-website/youtube-website%5E2017%5Eyoutube-logo-redesign-cropped.jpg" alt="youtube_symbol" />
                             <iframe title="YouTube video frame" width="400" height="249" src="https://www.youtube.com/embed/4vw73p_6tPQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
+                    </div>
+                </div>
+                <div className='about_section'>
+                    <div className='about_section_top'>
+                        <p className='text_description_top'>
+                            Do you enjoy changing between entertainment services in a short period of time? Getting tired of it? Well
+                            look no further, DESK is here to help.
+                        </p>
+                        <iframe title="Tim's player frame" src="https://player.twitch.tv/?channel=timthetatman" frameborder="0" allowfullscreen="true" scrolling="no" height="300" width="540"></iframe>
+                    </div>
+                    <div className='about_section_middle'>
+                    <iframe title="Ninja's player frame" allowfullscreen="true" src="https://mixer.com/embed/player/Ninja?disableLowLatency=1" width="540" height="300"> </iframe>
+                        <p className='text_description_middle'>
+                            Daily Entertainment Streaming King is a one of a kind streaming service that allows users to navigate to and from their favorite entertainment with ease.
+                        </p>
+                    </div>
+                    <div className='about_section_bottom'>
+                        <p className='text_description_bottom'>
+                            DESK was designed to make watching entertainment stressfree, easy, and fun. Plus the best
+                            part is you will have all your favorite entertainment services all on your desk...hassle free!
+                        </p>
+                        <iframe title='YouTube video frame' width="560" height="315" src="https://www.youtube.com/embed/DYlesHOaPkY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div className='entertainment_offered_and_in_the_work'>
@@ -43,11 +67,11 @@ class Home extends Component {
                         <div>
                             <img className='service_logo' src="https://cdn.vox-cdn.com/thumbor/Yq1Vd39jCBGpTUKHUhEx5FfxvmM=/39x0:3111x2048/1200x800/filters:focal(39x0:3111x2048)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png" alt="netflix_logo" />
                             <img className='service_logo' src="https://icon-library.net/images/hbo-go-icon/hbo-go-icon-6.jpg" alt="hboGo_logo" />
+                            <img className='service_logo' src="https://upload.wikimedia.org/wikipedia/commons/6/68/Logo_TNT_Series.png" alt="tnt_logo" />
                             <img className='service_logo' src="https://d1.awsstatic.com/case-studies/600x400_amazon-prime-video_Logo.90fb8f16b76b14ffaa6e5c5f5e6ede7eaa23db75.png" alt="prime_video" />
                             <img className='service_logo' src="https://cdn.brandfolder.io/F97BMUF5/as/puee7j-5t3vuw-1nmo6c/Image_uploaded_from_iOS__8_1503433270.jpg" alt="hulu_logo" />
                             <img className='service_logo' src="https://i0.wp.com/thegeekswarm.com/wp-content/uploads/2019/11/disney-plus-logo.jpg?fit=1000%2C563&ssl=1" alt="disneyPlus_logo" />
                             <img className='service_logo' src="https://pmcvariety.files.wordpress.com/2013/11/amc-logo.jpg?w=1000&h=563&crop=1" alt="amc_logo" />
-                            <img className='service_logo' src="https://upload.wikimedia.org/wikipedia/commons/6/68/Logo_TNT_Series.png" alt="tnt_logo" />
                             <img className='service_logo' src="https://i.ytimg.com/vi/g88H8xpS7OI/maxresdefault.jpg" alt="fx_logo" />
                         </div>
                     </div>

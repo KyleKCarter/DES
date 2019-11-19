@@ -55,6 +55,7 @@ class Register extends Component {
     render() {
         return (
             <div className='register_body'>
+                <div className='fake_nav_bar'></div>
                 <div className='register_body_content'>
                     <div className='register_title'>logo goes here</div>
                     <div>

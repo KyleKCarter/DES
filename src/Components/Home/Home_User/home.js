@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 class Home extends Component {
     render() {
         return (
+            <>
+            <div className='fake_nav_bar'></div>
             <div className='user_home_page'>
                 <div className='user_home_content'>
                     <Link to='/user/twitch'>
@@ -18,15 +20,17 @@ class Home extends Component {
                         <img className='youtube_logo' src="https://www.versionmuseum.com/images/websites/youtube-website/youtube-website%5E2017%5Eyoutube-logo-redesign-cropped.jpg" alt="youtube_logo"/>
                     </Link>
                 </div>
-                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
+                {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href='/user/login' : null }
             </div>
+            </>
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
-        loggedIn: state.authReducer.loggedIn
+        loggedIn: state.authReducer.loggedIn,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 

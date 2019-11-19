@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import routes from './routes';
 import { connect } from 'react-redux';
 
 //reducers
-import {changeNav, logoutUser, getLoggedInStatus} from './Redux/Reducers/AuthReducer/AuthReducer';
+import { changeNav, logoutUser, getLoggedInStatus } from './Redux/Reducers/AuthReducer/AuthReducer';
 
 class App extends Component {
   state = {
@@ -15,7 +15,6 @@ class App extends Component {
     this.props.getLoggedInStatus();
   }
   render() {
-    console.log(this.props.loggedIn, this.props.user);
     return (
       <BrowserRouter>
         <div className="App">

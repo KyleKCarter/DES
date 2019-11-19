@@ -40,7 +40,7 @@ class ReviewsLandingPage extends Component {
 
     render() {
         const mappedReviews = this.props.reviews.map(val => {
-            // console.log(val);
+            console.log(val);
             // need to add date posted
             return (
                 <div className='review_content_box'>
@@ -49,23 +49,27 @@ class ReviewsLandingPage extends Component {
                         <div className='juju_number'>{this.props.JuJu}</div>
                         <div onClick={() => this.badJuJu(val.review_id)}><i class="fas fa-caret-down"></i></div>
                     </div>
-                    <div className='review_content_box_review'>
-                        <h1 className='review_title'>{val.review_title}</h1>
-                        <div className='review_username'>By: {val.username}</div>
-                        <div className='review_text'>{val.review_text}</div>
+                    <div className='profile_pic_and_post'>
+                        <img className='review_post_profile_pic' src={val.img} alt="profile_pic" />
+                        <div className='review_content_box_review'>
+                            <h1 className='review_title'>{val.review_title}</h1>
+                            <div className='review_username'>By: {val.username}</div>
+                            <div className='review_text'>{val.review_text}</div>
+                        </div>
                     </div>
                 </div>
             )
         })
         return (
             <div className='review_landing_page'>
+                <div className='fake_nav_bar'></div>
                 <div className='reviews_landing_page_header'>
                     <button onClick={this.goBack}>Back</button>
                     <h1 className='reviews_landing_page_title'>{this.props.match.params.entertainment} Reviews</h1>
                     <button onClick={e => this.postReview(e)}>Post</button>
                 </div>
                 <div className='review_content_area'>{mappedReviews}</div>
-                {this.props.loggedIn === false ? window.location.href = '/user/login' : null}
+                {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href = '/user/login' : null}
             </div>
         )
     }
@@ -76,7 +80,8 @@ const mapStateToProps = state => {
         reviews: state.reviewReducer.reviews,
         entertainment: state.reviewReducer.entertainment,
         loggedIn: state.authReducer.loggedIn,
-        JuJu: state.reviewReducer.JuJu
+        JuJu: state.reviewReducer.JuJu,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 

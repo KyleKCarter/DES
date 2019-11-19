@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.fake_nav_bar {
+    height: 12vh;
+}
+
 .user_home_content {
     background: #2b2b2bd7;
     height: 95%;

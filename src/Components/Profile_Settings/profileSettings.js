@@ -116,6 +116,7 @@ class ProfileSettings extends Component {
         const { img, username, bio } = this.props;
         return (
             <body className='settings_page'>
+            <div className='fake_nav_bar'></div>
                 <div className='settings_header'>
                     <h1 className='settings_title'>Settings</h1>
                     <h3 className='settings_cancel_button' onClick={this.goBackToProfile}>Cancel</h3>
@@ -192,7 +193,7 @@ class ProfileSettings extends Component {
                         :
                         null
                 }
-                {this.props.loggedIn === false ? window.location.href = '/user/login' : null}
+                {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href = '/user/login' : null}
             </body>
         )
     }
@@ -208,7 +209,8 @@ const mapStateToProps = state => {
         userImg: state.settingsReducer.userImg,
         twitch_profile_id: state.accountSetUpReducer.twitch_profile_id,
         mixer_profile_id: state.accountSetUpReducer.mixer_profile_id,
-        youtube_profile_id: state.accountSetUpReducer.youtube_profile_id
+        youtube_profile_id: state.accountSetUpReducer.youtube_profile_id,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 

@@ -40,6 +40,7 @@
 .profile_username {
     margin: 0;
     font-size: 45px;
+    width: 20vw;
 }
 
 .description_reviews_menu {
@@ -94,7 +95,7 @@
 
 .user_review_content_area {
     width: 85%;
-    height: 40vh;
+    height: 45vh;
     margin: 2% 0% 2% 0%;
     background-color: rgba(65, 65, 65, 0.808);
     display: flex;
@@ -102,12 +103,14 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    overflow: scroll;
 }
 
 .user_review_content_box_area {
     width: 90%;
     padding: 1%;
-    margin-top: 2.5%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
     background-color: rgba(170, 170, 170, 0.699);
     box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
 }

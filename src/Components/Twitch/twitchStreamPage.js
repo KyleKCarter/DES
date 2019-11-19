@@ -15,6 +15,7 @@ class TwitchStreamPage extends Component {
         const { display_name } = this.state;
         return (
             <div className='page_content'>
+                <div className='fake_nav_bar'></div>
                 <div className='link'>
                     <Link to='/user/twitch'><button className='back_button'>{'<'}Back</button></Link>
                     <h1 className='twitch_streamer_name'>{this.state.display_name}</h1>
@@ -23,7 +24,7 @@ class TwitchStreamPage extends Component {
                     <iframe title="Streamer's player frame" src={`https://player.twitch.tv/?channel=${display_name}`} frameborder="0" allowfullscreen="true" scrolling="no" height="550" width="790"></iframe>
                     <iframe title="Streamer's chat frame" src={`https://www.twitch.tv/embed/${display_name}/chat`} frameborder="0" scrolling="no" height="550" width="350"></iframe>
                 </div>
-                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
+                {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href='/user/login' : null }
             </div>
         )
     }
@@ -31,7 +32,8 @@ class TwitchStreamPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        loggedIn: state.authReducer.loggedIn
+        loggedIn: state.authReducer.loggedIn,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 

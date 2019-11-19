@@ -35,7 +35,8 @@ class ReviewPostPage extends Component {
         const { title, username, review } = this.props;
         return (
             <div className='post_page'>
-                <h1>Post A Review</h1>
+                <div className='fake_nav_bar'></div>
+                <h1 className='post_a_review_page_top'>Post A Review</h1>
                 <div className='content_box'>
                     <div className='post_title'>
                         <div className='title_left'>
@@ -64,7 +65,7 @@ class ReviewPostPage extends Component {
                         <button className='post_button' onClick={this.addReview}>Post</button>
                     </div>
                 </div>
-                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
+                {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href='/user/login' : null }
             </div>
         )
     }
@@ -76,7 +77,8 @@ const mapStateToProps = state => {
         username: state.postReducer.username,
         review: state.postReducer.review,
         entertainment: state.postReducer.entertainment,
-        loggedIn: state.authReducer.loggedIn
+        loggedIn: state.authReducer.loggedIn,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 

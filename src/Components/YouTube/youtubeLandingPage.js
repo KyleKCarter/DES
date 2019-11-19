@@ -102,6 +102,8 @@ class YoutubeLandingPage extends Component {
             entertainmentSideMenu += ' entertainment_youtube-open'
         }
         return (
+            <>
+            <div className='fake_nav_bar'></div>
             <div className='youtube_user_landing_page'>
                 <div className='subscribed_section'>
                     <div className='youtube_header'>
@@ -121,8 +123,9 @@ class YoutubeLandingPage extends Component {
                         }
                     </div>
                 </div>
-                {this.props.loggedIn === false ? window.location.href = '/user/login' : null}
+                {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href = '/user/login' : null}
             </div>
+            </>
         )
     }
 }
@@ -131,7 +134,8 @@ function mapStateToProps(state) {
     return {
         youtube_profile_id: state.youtubeReducer.youtube_profile_id,
         user: state.authReducer.user,
-        loggedIn: state.authReducer.loggedIn
+        loggedIn: state.authReducer.loggedIn,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 

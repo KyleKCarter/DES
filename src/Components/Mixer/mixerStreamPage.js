@@ -15,6 +15,7 @@ class MixerStreamPage extends Component {
         const { display_name } = this.state;
         return (
             <div className='page_content'>
+                <div className='fake_nav_bar'></div>
                 <div className='link'>
                     <Link to='/user/mixer'><button className='back_button'>{'<'}Back</button></Link>
                     <h1 className='streamer'>{this.state.display_name}</h1>

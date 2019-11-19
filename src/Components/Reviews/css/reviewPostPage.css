@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+.post_a_review_page_top {
+    margin-top: 2.5%;
+}
+
 .content_box {
     border: 1px solid rgb(175, 175, 175);
     background: rgb(175, 175, 175);

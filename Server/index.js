@@ -91,51 +91,6 @@ app.get("/auth/user", function(req, res) {
 })
 
 //nodemailer implementation
-
-// const transport = {
-//     host: 'smtp.gmail.com',
-//     auth: {
-//         user: creds.USER,
-//         pass: creds.PASS
-//     }
-// }
-
-// const transporter = nodemailer.createTransport(transport)
-
-// transporter.verify((error, success) => {
-//     if (error) {
-//         console.log(error);
-//     } else {
-//         console.log('Server is ready to take messages');
-//     }
-// });
-
-// app.post('/send', (req, res, next) => {
-//     const name = req.body.name
-//     const email = req.body.email
-//     const message = req.body.message
-//     const content = `name: ${name} \n email: ${email} \n message: ${message}`
-
-//     const mail = {
-//         from: name,
-//         to: 'RECEIVING_EMAIL_ADDRESS_GOES_HERE', //Change to email address that you want to receive messages on
-//         subject: 'Welcome to the team!',
-//         text: content
-//     }
-
-// transport.sendMail(mail, (error, data) => {
-//     if(error) {
-//         res.json({
-//             msg: 'fail'
-//         })
-//     } else {
-//         res.json({
-//             msg: 'success'
-//         })
-//     }
-// })
-// })
-
 app.post('/send', (req, res) => {
     //create reusable transporter object using the default SMTP transport
     const { name, email } = req.body
@@ -164,7 +119,6 @@ app.post('/send', (req, res) => {
 
     //send mail with defined transport object
     transporter.sendMail(mailOptions, (error, data) => {
-        console.log(mailOptions)
         if (error) {
             console.log('Error Occurs')
         } else {

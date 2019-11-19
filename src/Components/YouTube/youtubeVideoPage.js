@@ -25,7 +25,7 @@ class YouTubeVideoPage extends Component {
                 <div className='video_content'>
                     <iframe title='Video frame' src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true' width="880" height="530"></iframe>
                 </div>
-                {this.props.loggedIn === false ? window.location.href='/user/login' : null }
+                {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href='/user/login' : null }
             </div>
         )
     }
@@ -33,7 +33,8 @@ class YouTubeVideoPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        loggedIn: state.authReducer.loggedIn
+        loggedIn: state.authReducer.loggedIn,
+        finishedChecking: state.authReducer.finishedChecking
     }
 }
 
