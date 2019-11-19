@@ -57,7 +57,7 @@ class SetUp extends Component {
                         <button className='complete_button' onClick={this.onClickComplete}>COMPLETE</button>
                         <button className='set_up_later' onClick={this.setUpLater}>Set up later</button>
                     </div>
-                    {/* {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href = '/user/login' : null} */}
+                    {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href = '/user/login' : null}
                 </div>
             </>
         )
