@@ -17,6 +17,12 @@
     border-radius: 3px;
 }
 
+.youtube_reviews_button:hover {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(241, 86, 86);
+}
+
 .subscribed_section {
     display: flex;
     flex-direction: column;

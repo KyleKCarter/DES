@@ -3,6 +3,8 @@ import './login.css';
 import { connect } from 'react-redux';
 import { updateState, resetFields, loginUser } from '../../../Redux/Reducers/AuthReducer/AuthReducer';
 import { Link } from 'react-router-dom';
+import DESK from '../../../Images/DESK.jpg';
+import DESK2 from '../../../Images/DESK2.jpg';
 
 class Login extends Component {
     state = {
@@ -28,8 +30,8 @@ class Login extends Component {
         return (
             <div className='login_body'>
                 <div className='fake_nav_bar'></div>
+                <img className='desk_logo_login' src={DESK} alt="logo" />
                 <div className='login_body_content'>
-                    <div className='login_title'>Login</div>
                     <div>
                         <form className='login_form'>
                             <div>Username</div>
@@ -46,6 +48,7 @@ class Login extends Component {
                 </div>
                 <div className='under_login'>
                     <div className='logo_plus_text'>
+                        <img className='login_desk_logo' src={DESK2} alt="logo_DESK2"/>
                         <p>account</p>
                     </div>
                     <p>With this account, you can access all features available in Daily Entertainment Streaming King.</p>

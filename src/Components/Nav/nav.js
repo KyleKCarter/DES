@@ -3,6 +3,7 @@ import './nav.css';
 import { Link, withRouter } from 'react-router-dom';
 import { changeNav, logoutUser } from '../../Redux/Reducers/AuthReducer/AuthReducer';
 import { connect } from 'react-redux';
+import DESK from '../../Images/DESK.jpg'
 
 class Nav extends Component {
     state = {
@@ -29,7 +30,7 @@ class Nav extends Component {
         return (
             <div className='navBar'>
                 <Link to='/'>
-                    <div className='title'>Daily Entertainment Streaming King</div>
+                    <img className='desk_logo_nav' src={DESK} alt="logo" />
                 </Link>
                 <ul className='parent_ul'>
                     {!this.props.user.username ?
@@ -83,7 +84,7 @@ class Nav extends Component {
                         </>
                         : null
                     }
-                    {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href='/user/login' : null }
+                    {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href = '/user/login' : null}
                 </ul>
             </div>
         )

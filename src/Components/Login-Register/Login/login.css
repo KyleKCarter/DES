@@ -15,6 +15,25 @@
     height: 43.5%;
 }
 
+.logo_plus_text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+.login_desk_logo {
+    width: 20%;
+}
+
+.desk_logo_login {
+    width: 5%;
+    margin-top: 7%;
+}
+
+.logo_plus_text p {
+    margin-left: 5%;
+}
+
 .login_title {
     color: rgb(235,223,223);
     margin-bottom: 2%;
@@ -102,7 +121,7 @@ form div {
 }
 
 .under_login {
-    margin-top: 10%;
+    margin-top: 7.5%;
     width: 374px;
     height: 85px;
     font-family: 'Roboto', sans-serif;

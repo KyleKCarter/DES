@@ -91,7 +91,7 @@ class YoutubeLandingPage extends Component {
         let mappedChannelVids = this.state.channelSection.map(val => {
             return (
                 <div className='channel_section'>
-                    <button className='stream_button' onClick={(e) => this.getStreamId(e, val.snippet.channelId)}>Watch Stream</button>
+                    {/* <button className='stream_button' onClick={(e) => this.getStreamId(e, val.snippet.channelId)}>Watch Stream</button> */}
                     <img className='video_thumbnail' onClick={(e) => this.getVideo(e, val.id.videoId)} src={`${val.snippet.thumbnails.high.url}`} alt="video_thumbnail" />
                     <div className='video_title' onClick={(e) => this.getVideo(e, val.id.videoId)}>{val.snippet.title}</div>
                 </div>

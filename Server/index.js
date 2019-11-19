@@ -78,6 +78,8 @@ app.use((request, response, next) => {
     next();
 });
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 //Auth implementation
 app.post('/auth/user/register', register);
 app.post('/auth/user/login', login);

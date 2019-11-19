@@ -17,9 +17,11 @@ class YouTubeVideoPage extends Component {
     render() {
         const {videoId, video_title} = this.state
         return (
-            <div className='page_content'>
+            <>
+            <div className='fake_nav_bar'></div>
+            <div className='page_content_youtube'>
                 <div className='link'>
-                    <Link to='/user/youtube'><button>{'<'} Back</button></Link>
+                    <Link to='/user/youtube'><button className='back_button_youtube'>{'<'} Back</button></Link>
                     <h1 className='video_title'>{video_title}</h1>
                 </div>
                 <div className='video_content'>
@@ -27,6 +29,7 @@ class YouTubeVideoPage extends Component {
                 </div>
                 {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href='/user/login' : null }
             </div>
+            </>
         )
     }
 }

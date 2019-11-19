@@ -28,6 +28,12 @@
     border-radius: 3px;
 }
 
+.twitch_reviews_button:hover {
+    cursor: pointer;
+    background-color: #c7a5fa;
+    border: none;
+}
+
 .cardSection {
     background: whitesmoke;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;

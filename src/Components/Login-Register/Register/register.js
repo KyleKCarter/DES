@@ -3,6 +3,7 @@ import './register.css';
 import { resetFields, updateState, registerUser, loginUser } from '../../../Redux/Reducers/AuthReducer/AuthReducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import DESK from '../../../Images/DESK.jpg';
 
 class Register extends Component {
     state = {
@@ -57,8 +58,8 @@ class Register extends Component {
             <div className='register_body'>
                 <div className='fake_nav_bar'></div>
                 <div className='register_body_content'>
-                    <div className='register_title'>logo goes here</div>
-                    <div>
+                <img className='desk_logo_signup' src={DESK} alt="logo" />
+                    <div className='sign_up_section'>
                         <form className='register_form' type='submit'>
                             <div>
                                 <div className='register_description'>First Name:</div>

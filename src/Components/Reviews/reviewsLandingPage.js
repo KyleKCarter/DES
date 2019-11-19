@@ -64,9 +64,9 @@ class ReviewsLandingPage extends Component {
             <div className='review_landing_page'>
                 <div className='fake_nav_bar'></div>
                 <div className='reviews_landing_page_header'>
-                    <button onClick={this.goBack}>Back</button>
+                    <button className='review_back_button' onClick={this.goBack}>Back</button>
                     <h1 className='reviews_landing_page_title'>{this.props.match.params.entertainment} Reviews</h1>
-                    <button onClick={e => this.postReview(e)}>Post</button>
+                    <button className='review_post_button' onClick={e => this.postReview(e)}>Post</button>
                 </div>
                 <div className='review_content_area'>{mappedReviews}</div>
                 {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href = '/user/login' : null}

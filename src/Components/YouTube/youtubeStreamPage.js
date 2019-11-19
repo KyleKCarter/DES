@@ -15,9 +15,11 @@ class YouTubeStreamPage extends Component {
     render() {
         const { display_name, streamId } = this.state;
         return (
-            <div className='page_content'>
+            <>
+            <div className='fake_nav_bar'></div>
+            <div className='page_content_youtube'>
                 <div className='link'>
-                    <Link to='/user/youtube'><button>{'<'} Back</button></Link>
+                    <Link to='/user/youtube'><button className='back_button_youtube'>{'<'} Back</button></Link>
                     <h1 className='video'>{display_name}</h1>
                 </div>
                 <div className='video_content'>
@@ -25,6 +27,7 @@ class YouTubeStreamPage extends Component {
                 </div>
                 {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href='/user/login' : null }
             </div>
+            </>
         )
     }
 }

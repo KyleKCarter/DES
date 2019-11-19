@@ -9,7 +9,8 @@ body{
 }
 
 .content {
-    width: 100%;
+    /* width: 100%; */
+    width: stretch;
     height: 82.5vh;
     background: url("https://blog.twitch.tv/assets/uploads/c437ea957c4c0597cd81aa5c4c4dc398.jpeg");
     animation: slide 60s infinite;
@@ -108,6 +109,7 @@ h2 {
     justify-content: space-around;
     align-items: center;
     background-color: #9149fc;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
 }
 
 .twitch_symbol {
@@ -124,6 +126,7 @@ h2 {
     justify-content: space-around;
     align-items: center;
     background-color: #001159;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
 }
 
 .mixer_symbol {
@@ -140,6 +143,7 @@ h2 {
     justify-content: space-around;
     align-items: center;
     background-color: rgb(226, 226, 226);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px 0px;
 }
 
 .youtube_symbol {
@@ -148,12 +152,44 @@ h2 {
     box-shadow: 2.5px 2.5px 2.5px 2.5px red;
 }
 
+.summit_stream {
+    height: 65%;
+    width: 90%;
+}
+
+.shroud_stream {
+    height: 66%;
+    width: 90%;
+}
+
+.hundred_thieves_youtube {
+    height: 65%;
+    width: 90%;
+}
+
+@media (max-width: 950px) {
+    .little_taste{
+        display: flex;
+        justify-content: flex start;
+        align-items: center;
+        padding-top: 5%;
+    }
+    .little_taste_content {
+        display: none;
+    }
+
+    .about_section {
+        margin-top: -50%;
+    }
+}
+
 .about_section_top {
     display: flex;
     justify-content: space-around;
+    height: 50vh;
     align-items: center;
     padding: 10% 0 10% 0;
-    background-image: linear-gradient(#f9f9f9, #aa71ff, #9149fc83);
+    background-image: linear-gradient(#f9f9f9, #aa71ff, #9149fc);
 }
 
 .text_description_top {
@@ -169,8 +205,9 @@ h2 {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 50vh;
     padding: 10% 0 10% 0;
-    background-image: linear-gradient(#9149fc83, #182458, #001059bd);
+    background-image: linear-gradient(#9149fc, #182458, #001059bd);
 }
 
 .text_description_middle {
@@ -186,6 +223,7 @@ h2 {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 50vh;
     padding: 10% 0 10% 0;
     background-image: linear-gradient(#001059bd, rgb(255, 27, 27), rgba(255, 0, 0, 0.589));
 }
@@ -199,37 +237,65 @@ h2 {
     line-height: 34px;
 }
 
+.tim_stream {
+    height: 97%;
+    width: 45%;
+}
+
+.ninja_stream {
+    height: 97%;
+    width: 45%;
+}
+
+.pewd_youtube {
+    height: 97%;
+    width: 45%;
+}
+
 .entertainment_offered_and_in_the_work {
     display: flex;
-    height: 95vh;
+    justify-content: space-between;
+    height: 100vh;
     background-image: linear-gradient(rgba(255, 0, 0, 0.589), rgb(36, 18, 18), black);
 }
 
 .entertainment_logo_section {
-    width: 42%;
+    width: 100%;
     height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
     margin-left: 50px;
     margin-top: 40px;
 }
 
-.service_logo {
-    width: 12vw;
-    height: 14vh;
-    margin: 10px;
-}
-
-.text_section {
-    width: 45%;
+.current_logos_section {
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 30vh;
-    margin-top: 90px;
+}
+
+.current_logos {
+    display: flex;
+}
+
+.future_logos_section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.future_logos {
+    display: flex;
+    flex-flow: row wrap;
+    width: 38%;
+    height: 70%;
+}
+
+.service_logo {
+    width: 10vw;
+    height: 12vh;
+    margin: 10px;
 }
 
 p {
@@ -237,6 +303,56 @@ p {
     color: whitesmoke;
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
+}
+
+.desk_logo_section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.desk_logo {
+    height: 70%;
+    width: 40%;
+}
+
+@media (max-width: 800px) {
+
+    .about_section_top {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .about_section_middle {
+        display: flex;
+        flex-direction: column
+    }
+
+    .about_section_bottom {
+        display: flex;
+        flex-direction: column
+    }
+
+    .entertainment_offered_and_in_the_work {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* .current_logos {
+        display: flex;
+        width: 25vw;
+    }
+
+    .future_logos {
+        display: none;
+    }
+
+    .text_section {
+        display: none;
+    } */
 }
 
 .button_footer {

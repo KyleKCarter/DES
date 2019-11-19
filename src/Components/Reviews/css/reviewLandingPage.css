@@ -16,6 +16,28 @@
     margin: 0;
 }
 
+.review_back_button {
+    height: 4vh;
+    width: 6vw;
+    border-radius: 5px;
+}
+
+.review_back_button:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.review_post_button {
+    height: 4vh;
+    width: 6vw;
+    border-radius: 5px;
+}
+
+.review_post_button:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
 .review_content_area {
     width: 75%;
     height: 75%;

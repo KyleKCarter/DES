@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: linear-gradient(#9149fc, #515151)
 }
 
 .link {
@@ -13,15 +14,15 @@
     flex-direction: row;
 }
 
-.back_button {
+.back_button_twitch {
     width: 6vw;
     height: 4vh;
     border-radius: 2px;
 }
 
-.back_button:hover {
-    border: #9149fc;
-    background-color: #9149fc;
+.back_button_twitch:hover {
+    border: #c8a4ff;
+    background-color: #b88cfc;
     cursor: pointer;
     color: whitesmoke;
 }
@@ -34,7 +35,7 @@
     justify-content: center;
     align-items: center;
     letter-spacing: 1px;
-    text-shadow: 2px 2px #9149fc;
+    text-shadow: 2px 2px #ae78ff;
 }
 
 .stream_content {

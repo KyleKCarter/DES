@@ -1,0 +1,29 @@
+.page_content_youtube {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgb(255, 46, 46), #515151)
+}
+
+.link {
+    width: 90vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.back_button_youtube {
+    width: 6vw;
+    height: 4vh;
+    border-radius: 2px;
+}
+
+.back_button_youtube:hover {
+    border: 0;
+    background-color: rgb(255, 146, 146);
+    cursor: pointer;
+    color: whitesmoke;
+}

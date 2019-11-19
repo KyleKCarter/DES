@@ -34,6 +34,10 @@
 
 .title_field {
     width: 15vw;
+    height: 4vh;
+    padding-left: 4%;
+    border: none;
+    border-radius: 2px;
 }
 
 .title_right {
@@ -52,6 +56,10 @@
 
 .username_input_review_field {
     width: 15vw;
+    height: 4vh;
+    padding-left: 4%;
+    border: none;
+    border-radius: 2px;
 }
 
 .text_box {
@@ -84,6 +92,7 @@
 
 .cancel_button:hover {
     cursor: pointer;
+    background-color: rgb(230, 230, 230);
 }
 
 .post_button {
@@ -95,4 +104,5 @@
 
 .post_button:hover {
     cursor: pointer;
+    background-color: rgb(230, 230, 230);
 }

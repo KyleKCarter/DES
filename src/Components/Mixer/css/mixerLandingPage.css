@@ -4,7 +4,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(36, 54, 78);
+    /* background-color: rgb(36, 54, 78); */
+    background-image: linear-gradient(rgb(36, 54, 78), rgb(36, 54, 78), #515151);
 }
 
 .mixer_header {
@@ -22,6 +23,12 @@
     height: 4vh;
     width: 7vw;
     border-radius: 3px;
+}
+
+.mixer_reviews_button:hover {
+    cursor: pointer;
+    background-color: rgb(89, 128, 180);
+    border: none;
 }
 
 .mixer_card_section {

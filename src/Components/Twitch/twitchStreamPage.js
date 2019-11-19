@@ -17,7 +17,7 @@ class TwitchStreamPage extends Component {
             <div className='page_content'>
                 <div className='fake_nav_bar'></div>
                 <div className='link'>
-                    <Link to='/user/twitch'><button className='back_button'>{'<'}Back</button></Link>
+                    <Link to='/user/twitch'><button className='back_button_twitch'>{'<'}Back</button></Link>
                     <h1 className='twitch_streamer_name'>{this.state.display_name}</h1>
                 </div>
                 <div className='stream_content'>

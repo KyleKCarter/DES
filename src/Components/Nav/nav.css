@@ -11,6 +11,11 @@
     position: fixed;
 }
 
+.desk_logo_nav {
+    height: 20%;
+    width: 16.5%;
+}
+
 .title {
     color: whitesmoke;
 }
