@@ -12,7 +12,7 @@ const youtubeStrategy = require('passport-youtube-v3').Strategy;
 
 //nodemailer
 const nodemailer = require('nodemailer');
-const creds = require('../config');
+const creds = require('../emailconfig');
 
 const app = express();
 
