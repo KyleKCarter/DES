@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 .env
-.config.js
+config.js
 /server/passport
 
 # testing
