@@ -44,11 +44,11 @@ class ReviewsLandingPage extends Component {
             // need to add date posted
             return (
                 <div className='review_content_box'>
-                    <div className='review_juju'>
+                    {/* <div className='review_juju'>
                         <div onClick={() => this.goodJuJu(val.review_id)}><i class="fas fa-caret-up"></i></div>
                         <div className='juju_number'>{this.props.JuJu}</div>
                         <div onClick={() => this.badJuJu(val.review_id)}><i class="fas fa-caret-down"></i></div>
-                    </div>
+                    </div> */}
                     <div className='profile_pic_and_post'>
                         <img className='review_post_profile_pic' src={val.img} alt="profile_pic" />
                         <div className='review_content_box_review'>
