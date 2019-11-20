@@ -58,7 +58,7 @@
 .review_content_box {
     border: 1px solid rgba(202, 202, 202, 0.856);
     width: 80%;
-    height: 20vh;
+    height: 25vh;
     margin-top: 2.5vh;
     background: rgba(187, 187, 187, 0.856);
     box-shadow: rgba(0, 0, 0, 0.18) 0px 5px 10px 0px;
@@ -70,7 +70,8 @@
 }
 
 .review_post_profile_pic {
-    width: 17%;
+    width: 10%;
+    height: 10%;
     border-radius: 100%;
     margin: 0 0 0 5%;
 }
@@ -79,6 +80,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 4%;
+    padding-right: 2%;
 }
 
 .review_title {
