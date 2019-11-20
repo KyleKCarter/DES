@@ -50,7 +50,7 @@ class Register extends Component {
         }).catch(error => {
             console.log(error);
         })
-        await this.props.history.push('/user/set-up');
+        this.props.history.push('/user/set-up');
     }
 
     render() {
