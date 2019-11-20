@@ -21,8 +21,8 @@ class MixerStreamPage extends Component {
                     <h1 className='streamer'>{this.state.display_name}</h1>
                 </div>
                 <div className='stream_content'>
-                    <iframe title="Streamer's player frame" allowfullscreen="true" src={`https://mixer.com/embed/player/${display_name}?disableLowLatency=1`} width="790" height="550"> </iframe>
-                    <iframe title="Streamer's chat frame" allowfullscreen="true" src={`https://mixer.com/embed/chat/${display_name}`} width="350" height="550"> </iframe>
+                    <iframe title="Streamer's player frame" allowfullscreen="true" src={`https://mixer.com/embed/player/${display_name}?disableLowLatency=1`} className='mixer_stream_video_frame' width="790" height="550"> </iframe>
+                    <iframe title="Streamer's chat frame" allowfullscreen="true" src={`https://mixer.com/embed/chat/${display_name}`} className='mixer_stream_chat_frame' width="350" height="550"> </iframe>
                 </div>
                 {this.props.loggedIn === false && this.props.finishedChecking === "johnstilldumb" ? window.location.href = '/user/login' : null}
             </div>

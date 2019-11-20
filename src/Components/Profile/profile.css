@@ -132,3 +132,48 @@
 .edit_delete i:hover {
     cursor: pointer;
 }
+
+.edit_review_section {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(116, 116, 116, 0.856);
+    width: 80%;
+    align-self: center;
+    margin: 1% 0 4% 0;
+}
+
+.edit_title {
+    width: 15%;
+    height: 4vh;
+    border: none;
+    border-radius: 2px;
+    margin: 1% 0 1% 4%;
+    padding-left: 1%;
+}
+
+.edit_text {
+    width: 35%;
+    margin: 1% 0 2% 4%;
+    border: none;
+    border-radius: 3px;
+    padding-left: 1%;
+}
+
+.edit_review_section h3 {
+    color: rgb(255, 255, 255);
+    margin: 1% 0 0 4%;
+}
+
+.submit_edited_review {
+    width: 10%;
+    height: 4vh;
+    border-radius: 3px;
+    align-self: center;
+    margin: 1% 0 2% 0;
+}
+
+.submit_edited_review:hover {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(190, 190, 190);
+}

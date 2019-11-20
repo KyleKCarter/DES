@@ -26,25 +26,25 @@ class Profile extends Component {
     }
 
     editView = (val) => {
-        this.setState({ 
+        this.setState({
             editView: true,
             reviewId: val
-         })
+        })
     }
 
     handleChangeEdit = e => {
         this.props.updateState({ [e.target.name]: e.target.value })
     }
 
-    editReview = async() => {
-        const {id} = this.props.user
-        const {review_title, review_text} = this.props;
-        const {reviewId} = this.state;
+    editReview = async () => {
+        const { id } = this.props.user
+        const { review_title, review_text } = this.props;
+        const { reviewId } = this.state;
         await this.props.editUserReview(
             reviewId,
             review_title,
             review_text
-            );
+        );
         this.setState({ editView: false })
         await this.props.getUserReviews(id);
     }
@@ -118,14 +118,16 @@ class Profile extends Component {
                             </>
                             :
                             this.state.editView === true
-                            ?
-                            <div>
-                                <input placeholder='Title' onChange={this.handleChangeEdit} name='review_title' value={review_title} type="text" />
-                                <textarea placeholder='Review' onChange={this.handleChangeEdit} name="review_text" value={review_text} cols="30" rows="10"></textarea>
-                                <button onClick={() => this.editReview()}>Submit</button>
-                            </div>
-                            :
-                            null
+                                ?
+                                <div className='edit_review_section'>
+                                    <h3>Username:</h3>
+                                    <input className='edit_title' placeholder='Title' onChange={this.handleChangeEdit} name='review_title' value={review_title} type="text" />
+                                    <h3>Review:</h3>
+                                    <textarea className='edit_text' placeholder='Review' onChange={this.handleChangeEdit} name="review_text" value={review_text} cols="30" rows="10"></textarea>
+                                    <button className='submit_edited_review' onClick={() => this.editReview()}>Submit</button>
+                                </div>
+                                :
+                                null
                         :
                         null
                 }
