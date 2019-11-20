@@ -123,10 +123,13 @@ app.post('/send', (req, res) => {
     transporter.sendMail(mailOptions, (error, data) => {
         if (error) {
             console.log('Error Occurs')
+            res.status(500).json("An Error Occurred");
         } else {
             console.log('Email sent!')
+            res.status(200).json("An Error Occurred");
         }
     });
+
 });
 
 //passport serialization

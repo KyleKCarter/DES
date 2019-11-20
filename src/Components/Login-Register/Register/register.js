@@ -51,6 +51,7 @@ class Register extends Component {
             console.log(error);
         })
         this.props.history.push('/user/set-up');
+        console.log("here");
     }
 
     render() {
